@@ -1,0 +1,46 @@
+/*	
+
+	***** TASK DESCRIPTION ******
+
+
+	We would like you to spend some time to finish this Pac-Man game and make the necessary changes and refactors to make the game work. The code is completely undocumented and is purposefully written to be horrible code, is meant as a test, and it is in no way representative of production code.
+
+	What fixes or improvements you make is up to you, but you will need to explain and justify your choices. You are allowed to make any changes you want to the code as long as the game is still written in C++ and uses SDL. You do not need to implement more than one level and all art is supplied.
+
+	We supply a solution file for Visual Studio 2015, but feel free to convert it to another version if that is more practical for you. The folder "\Pacman\data" should be set as the working directory for the project.
+
+	Along with the code, we ask that you provide a document listing the changes you made, the reasons for making them, and what other changes/improvements you would make if you had more time. You can submit your work by uploading a ZIP of your changes via this website.
+
+	The code you should work with can be downloaded here.
+
+	PLEASE REMEMBER TO UPLOAD YOU FINAL COMPLETED ZIP FILE TO THE “CHOOSE FILE” BUTTON AT THE BOTTOM LEFT OF THIS PAGE BEFORE HITTING “SUBMIT ANSWER”
+
+
+	Good luck!
+
+	A free version of Visual Studio can be downloaded at:
+	https://www.visualstudio.com/downloads
+	You can find more information about Pac-Man here:
+	http://en.wikipedia.org/wiki/Pac-Man
+	http://www.webpacman.com
+
+*/
+
+
+
+/*	===============	TIMELINE DOCUMENTATION ===================	*/
+
+=> TOTAL TIME TAKEN: -- Hrs -- Min
+
+Day 1: 12th February 2023
+	
+	-> Brief:
+
+	* Task 1: Getting the project and Repository setup
+		- Details: downloaded the Pacman project from the website and created a private repository for it on GitHub to document the various changes on the project.
+		- ETA: 6 min
+
+	* Task 2: Initial Edits and Project setup
+		- Details: Set up the project to work with visual studio 2022, created a Timeline tracking file and browsed the files in the project.
+		- ETA: 30 min
+
