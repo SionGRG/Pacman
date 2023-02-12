@@ -106,4 +106,7 @@
       <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Documentation\Timeline Documentation.txt" />
+  </ItemGroup>
 </Project>
