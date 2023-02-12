@@ -44,8 +44,15 @@ Day 1: 12th February 2023
 		- Details: Set up the project to work with visual studio 2022, created a Timeline tracking file and browsed the files in the project.
 		- ETA: 30 min
 
-	* Task 2: Fixing Errors and Making sure the project compiles and runs
+	* Task 3: Fixing Errors and Making sure the project compiles and runs
 		- Details: Fixed the errors with include files for the libs, the games was was not compiling in x64 so I switched to Win32 (x86) to fix the problem with the linker not finding the main entry point. The game now compiles and runs, however, it's "VERY SLOWW!!".
 		- ETA: 35 min
 
+	* Task 4: Improving the Vector2f Class of Math Library 
+		- Details: Move the class methods definitions to the cpp files and left the declarations in the header file, inspected the project to look for similar structure that needed to change
+		- ETA: 50 min
+
+	* Task X: 
+		- Details: 
+		- ETA: -- min
 		
