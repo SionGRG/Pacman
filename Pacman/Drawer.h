@@ -8,19 +8,19 @@ struct SDL_Surface;
 class Drawer
 {
 public:
-	static Drawer* Create(SDL_Window* aWindow, SDL_Renderer* aRenderer);
+
+	Drawer(SDL_Window* aWindow, SDL_Renderer* aRenderer);
 	~Drawer(void);
 
 	void Draw(const char* anImage, int aCellX = 0, int aCellY = 0);
 	void DrawText(const char* aText, const char* aFontFile, int aX, int aY);
 
 private:
-	Drawer(SDL_Window* aWindow, SDL_Renderer* aRenderer);
 	bool Init();
 	
-	SDL_Window* myWindow;
-	SDL_Renderer* myRenderer;
-	SDL_Surface* world;
+	SDL_Window*		m_Window;
+	SDL_Renderer*	m_Renderer;
+	SDL_Surface*	m_World;
 };
 
 #endif // DRAWER_H

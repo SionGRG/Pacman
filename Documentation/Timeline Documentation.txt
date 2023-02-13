@@ -28,13 +28,35 @@
 
 
 
+
+	/*  ################### PROJECT PLAN ################### */
+
+Main Goals:
+	- create a sprite class
+	- create a Renderer that renders all the game objects
+	- improving memory management and fix memory leaks
+	- fix the memory leak problem that causes the game to crash after some time
+	- fix the framerate, and get the game to a playable state
+	- fix the collision detection, especially after the player dies
+
+
+Stretch Goals:
+	- sprite animation
+	- make spritesheets for animation
+	- improve the enemy AI movement
+	- add more enemies to the level
+	- add more levels (possibly)
+
+
+
+
 /*	===============	TIMELINE DOCUMENTATION ===================	*/
 
 => TOTAL TIME TAKEN: -- Hrs -- Min
 
 Day 1: 12th February 2023
 	
-	-> Brief:
+	-> Brief: Initial Project set up and ensure that the code compiles 
 
 	* Task 1: Getting the project and Repository setup
 		- Details: downloaded the Pacman project from the website and created a private repository for it on GitHub to document the various changes on the project.
@@ -52,7 +74,15 @@ Day 1: 12th February 2023
 		- Details: Move the class methods definitions to the cpp files and left the declarations in the header file, inspected the project to look for similar structure that needed to change
 		- ETA: 50 min
 
+Day 2: 13th February 2023
+
+	-> Brief: Understanding the game code and making a plan for what needs to improve and what to add if there is time
+
+	* Task 5: Create a game class and free up the main entry point 
+		- Details: created a game class to separate the game initialisation and the game loop while freeing up the main entry point
+		- ETA: 1 hrs 30 min
+
 	* Task X: 
 		- Details: 
-		- ETA: -- min
+		- ETA: -- hrs -- min
 		

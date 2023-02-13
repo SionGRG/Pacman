@@ -124,6 +124,7 @@
     <ClCompile Include="Cherry.cpp" />
     <ClCompile Include="Dot.cpp" />
     <ClCompile Include="Drawer.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="Ghost.cpp" />
     <ClCompile Include="main.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="Cherry.h" />
     <ClInclude Include="Dot.h" />
     <ClInclude Include="Drawer.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="Ghost.h" />
     <ClInclude Include="MovableGameEntity.h" />
