@@ -32,6 +32,7 @@
 	/*  ################### PROJECT PLAN ################### */
 
 Main Goals:
+	- Create a texture class for loading textures
 	- create a sprite class
 	- create a Renderer that renders all the game objects
 	- improving memory management and fix memory leaks
@@ -43,6 +44,7 @@ Main Goals:
 Stretch Goals:
 	- sprite animation
 	- make spritesheets for animation
+	- make a texture atlas of all the textures to save on loading
 	- improve the enemy AI movement
 	- add more enemies to the level
 	- add more levels (possibly)
@@ -81,6 +83,10 @@ Day 2: 13th February 2023
 	* Task 5: Create a game class and free up the main entry point 
 		- Details: created a game class to separate the game initialisation and the game loop while freeing up the main entry point
 		- ETA: 1 hrs 30 min
+
+	* Task X: Created a basic Event system
+		- Details: added more tasks to do, created a basic Event system, closing the window now closes the game.
+		- ETA: 10 min
 
 	* Task X: 
 		- Details: 

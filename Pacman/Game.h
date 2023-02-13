@@ -22,15 +22,18 @@ public:
 	~Game();
 
 	int Init();
+	int UpdateEvents();
 	int Update();
 	int Terminate();
 	
+	bool Running() { return m_IsRunning; }
+
 private:
 	SDL_Window* m_Window;
 	SDL_Renderer* m_Renderer;
 	Pacman* m_Pacman;
 	Drawer* m_Drawer;
-
+	bool m_IsRunning;
 };
 
 #endif // !__GAME_H__

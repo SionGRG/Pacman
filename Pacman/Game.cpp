@@ -18,6 +18,8 @@ Game::~Game()
 
 int Game::Init()
 {
+	m_IsRunning = false;
+
 	/* initialize SDL */
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
@@ -48,6 +50,23 @@ int Game::Init()
 	m_Drawer = new Drawer(m_Window, m_Renderer);
 	m_Pacman = Pacman::Create(m_Drawer);
 
+	m_IsRunning = true;
+	return retCode;
+}
+
+int Game::UpdateEvents()
+{
+	SDL_Event event;
+	SDL_PollEvent(&event);
+
+	switch (event.type)
+	{
+	case SDL_QUIT:
+		m_IsRunning = false;
+	default:
+		break;
+	}
+
 	return retCode;
 }
 
@@ -55,9 +74,10 @@ int Game::Update()
 {
 	float lastFrame = (float)SDL_GetTicks() * 0.001f;
 
-	SDL_Event event;
-	while (SDL_PollEvent(&event) >= 0)
+	while (m_IsRunning)
 	{
+		UpdateEvents();
+
 		float currentFrame = (float)SDL_GetTicks() * 0.001f;
 		float elapsedTime = currentFrame - lastFrame;
 
@@ -80,8 +100,13 @@ int Game::Update()
 
 int Game::Terminate()
 {
+	m_IsRunning = false;
+
 	delete m_Pacman;
 	delete m_Drawer;
+
+	SDL_DestroyWindow(m_Window);
+	SDL_DestroyRenderer(m_Renderer);
 
 	TTF_Quit();
 	IMG_Quit();
