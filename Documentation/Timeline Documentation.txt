@@ -1,4 +1,4 @@
-/*	
+Ôªø/*	
 
 	***** TASK DESCRIPTION ******
 
@@ -13,7 +13,7 @@
 
 	The code you should work with can be downloaded here.
 
-	PLEASE REMEMBER TO UPLOAD YOU FINAL COMPLETED ZIP FILE TO THE ìCHOOSE FILEî BUTTON AT THE BOTTOM LEFT OF THIS PAGE BEFORE HITTING ìSUBMIT ANSWERî
+	PLEASE REMEMBER TO UPLOAD YOU FINAL COMPLETED ZIP FILE TO THE ‚ÄúCHOOSE FILE‚Äù BUTTON AT THE BOTTOM LEFT OF THIS PAGE BEFORE HITTING ‚ÄúSUBMIT ANSWER‚Äù
 
 
 	Good luck!
@@ -32,7 +32,7 @@
 	/*  ################### PROJECT PLAN ################### */
 
 Main Goals:
-	- Create a texture class for loading textures
+‚úì	- Create a texture class for loading textures
 	- create a sprite class
 	- create a Renderer that renders all the game objects
 	- improving memory management and fix memory leaks
@@ -86,7 +86,7 @@ Day 2: 13th February 2023
 		- Details: created a game class to separate the game initialisation and the game loop while freeing up the main entry point
 		- ETA: 1 hrs 30 min
 
-	* Task 6: Created a basic Event system
+	* Task 6: Create a basic Event system
 		- Details: added more tasks to do, created a basic Event system, closing the window now closes the game.
 		- ETA: 10 min
 
@@ -98,6 +98,10 @@ Day 3: 15th February 2023
 	* Task 7: Texture abstraction 
 		- Details: created aTexture Class to abstract the creation of an SDL texture
 		- ETA: 1 hrs 10 min
+		
+	* Task 8: Limit the Frame rate
+		- Details: limited the Game's FPS to 60 frames per second
+		- ETA: 20 min
 		
 		
 	* Task X: 

@@ -72,13 +72,13 @@ int Game::UpdateEvents()
 
 int Game::Update()
 {
-	float lastFrame = (float)SDL_GetTicks() * 0.001f;
+	float lastFrame = (float)SDL_GetTicks();
 
 	while (m_IsRunning)
 	{
 		UpdateEvents();
 
-		float currentFrame = (float)SDL_GetTicks() * 0.001f;
+		float currentFrame = (float)SDL_GetTicks();
 		float elapsedTime = currentFrame - lastFrame;
 
 		if (!m_Pacman->Update(elapsedTime))
@@ -92,7 +92,9 @@ int Game::Update()
 		lastFrame = currentFrame;
 
 		SDL_RenderPresent(m_Renderer);
-		SDL_Delay(1);
+		
+		if (k_FrameDelay > elapsedTime)
+			SDL_Delay(k_FrameDelay - elapsedTime);	
 	}
 
 	return retCode;

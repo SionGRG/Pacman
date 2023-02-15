@@ -34,6 +34,11 @@ private:
 	Pacman* m_Pacman;
 	Drawer* m_Drawer;
 	bool m_IsRunning;
+
+	/* Initialise the Game FPS */
+	const float k_FPS = 60.f;
+	const float k_FrameDelay = 1000 / k_FPS;
+
 };
 
 #endif // !__GAME_H__
