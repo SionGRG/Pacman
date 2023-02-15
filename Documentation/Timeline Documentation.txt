@@ -56,6 +56,7 @@ Stretch Goals:
 
 => TOTAL TIME TAKEN: -- Hrs -- Min
 
+
 Day 1: 12th February 2023
 	
 	-> Brief: Initial Project set up and ensure that the code compiles 
@@ -76,6 +77,7 @@ Day 1: 12th February 2023
 		- Details: Move the class methods definitions to the cpp files and left the declarations in the header file, inspected the project to look for similar structure that needed to change
 		- ETA: 50 min
 
+
 Day 2: 13th February 2023
 
 	-> Brief: Understanding the game code and making a plan for what needs to improve and what to add if there is time
@@ -84,10 +86,20 @@ Day 2: 13th February 2023
 		- Details: created a game class to separate the game initialisation and the game loop while freeing up the main entry point
 		- ETA: 1 hrs 30 min
 
-	* Task X: Created a basic Event system
+	* Task 6: Created a basic Event system
 		- Details: added more tasks to do, created a basic Event system, closing the window now closes the game.
 		- ETA: 10 min
 
+
+Day 3: 15th February 2023
+	
+	-> Brief: Building the building blocks of the engine
+
+	* Task 7: Texture abstraction 
+		- Details: created aTexture Class to abstract the creation of an SDL texture
+		- ETA: 1 hrs 10 min
+		
+		
 	* Task X: 
 		- Details: 
 		- ETA: -- hrs -- min
