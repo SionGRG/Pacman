@@ -33,8 +33,8 @@
 
 Main Goals:
 ✓	- Create a texture class for loading textures
-	- create a sprite class
-	- create a Renderer that renders all the game objects
+✓	- create a sprite class
+✓	- create a Renderer that renders all the game objects
 	- improving memory management and fix memory leaks
 	- fix the memory leak problem that causes the game to crash after some time
 	- fix the framerate, and get the game to a playable state
@@ -103,7 +103,16 @@ Day 3: 15th February 2023
 		- Details: limited the Game's FPS to 60 frames per second
 		- ETA: 20 min
 		
+
+Day 4: 16th February 2023
+
+	-> Brief: Engine Architecture Overhaul Part 1
+
+	 * Task 9: Engine Architecture Overhaul Part 1
+		- Details: built the building block of my custom game engine, this includes a TextureCache class, A game Obejct class, a Sprite Class and a Renderer that abstract the SDL_Renderer. This will allow me to do sprite animations, load sprite atlas to save on loading.
+		- ETA: 4 hrs 00 min
 		
+				
 	* Task X: 
 		- Details: 
 		- ETA: -- hrs -- min

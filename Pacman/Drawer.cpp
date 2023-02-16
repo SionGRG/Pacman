@@ -32,6 +32,7 @@ void Drawer::Draw(const char* anImage, int aCellX, int aCellY)
 		return;
 
 	SDL_Texture* optimizedSurface = SDL_CreateTextureFromSurface(m_Renderer, surface);
+	SDL_FreeSurface(surface);
 
     SDL_Rect sizeRect;
     sizeRect.x = 0 ;

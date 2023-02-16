@@ -6,13 +6,14 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_ttf.h"
-#include "assert.h"
 #include "pacman.h"
 #include "drawer.h"
+#include <assert.h>
 #include <iostream>
+#include <vector>
+#include "DataStructures.h"
 
-#define retCode 0
-#define errCode -1
+class Renderer;
 
 class Game
 {
@@ -26,14 +27,21 @@ public:
 	int Update();
 	int Terminate();
 	
+	int AddGameObject(std::string& objName, GameObject* gameObject);
+	int RemoveGameObject(std::string& objName);
+	GameObject* GetGameObject(std::string& objName);
+
+
 	bool Running() { return m_IsRunning; }
 
 private:
-	SDL_Window* m_Window;
-	SDL_Renderer* m_Renderer;
+	Renderer* m_Renderer;
 	Pacman* m_Pacman;
 	Drawer* m_Drawer;
 	bool m_IsRunning;
+
+	GameObjectMap m_GameObjects;
+	GameObject* obj;
 
 	/* Initialise the Game FPS */
 	const float k_FPS = 60.f;

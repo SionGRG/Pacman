@@ -126,13 +126,16 @@
     <ClCompile Include="Drawer.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEntity.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Ghost.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MovableGameEntity.cpp" />
     <ClCompile Include="Pacman.cpp" />
     <ClCompile Include="PathmapTile.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StaticGameEntity.cpp" />
-    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureCache.cpp" />
     <ClCompile Include="Vector2f.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -140,16 +143,20 @@
     <ClInclude Include="Avatar.h" />
     <ClInclude Include="BigDot.h" />
     <ClInclude Include="Cherry.h" />
+    <ClInclude Include="DataStructures.h" />
     <ClInclude Include="Dot.h" />
     <ClInclude Include="Drawer.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEntity.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Ghost.h" />
     <ClInclude Include="MovableGameEntity.h" />
     <ClInclude Include="Pacman.h" />
     <ClInclude Include="PathmapTile.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="StaticGameEntity.h" />
-    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureCache.h" />
     <ClInclude Include="Vector2f.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

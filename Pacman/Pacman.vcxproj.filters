@@ -28,6 +28,9 @@
     <Filter Include="Engine\Graphics\Renderer">
       <UniqueIdentifier>{a80cb03b-c942-440a-9e6b-3fb6212eda33}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Game Objects">
+      <UniqueIdentifier>{cc216fd6-e234-4a14-90a6-317aaef1362d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Pacman.cpp">
@@ -70,10 +73,19 @@
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Engine\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Drawer.cpp">
+      <Filter>Engine\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Engine\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureCache.cpp">
+      <Filter>Engine\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Engine\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
       <Filter>Engine\Graphics\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -117,10 +129,22 @@
     <ClInclude Include="Game.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Engine\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Drawer.h">
+      <Filter>Engine\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Engine\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureCache.h">
+      <Filter>Engine\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Engine\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
       <Filter>Engine\Graphics\Renderer</Filter>
     </ClInclude>
   </ItemGroup>

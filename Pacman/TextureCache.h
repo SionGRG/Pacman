@@ -1,24 +1,22 @@
 #pragma once
-#ifndef __TEXTURE__
-#define __TEXTURE__
+#ifndef __TEXTURECACHE_H__
+#define __TEXTURECACHE_H__
 
 #include <string>
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_ttf.h"
-
-#define retCode 0
-#define errCode -1
+#include "DataStructures.h"
 
 /*
 	An abstraction of the creating an SDL Texture
 */
 
-class Texture
+class TextureCache
 {
 public:
-	Texture(const std::string& texName, const char* texPath, SDL_Renderer* renderer);
-	~Texture();
+	TextureCache(const std::string& texName, const char* texPath, SDL_Renderer* renderer);
+	~TextureCache();
 
 	int Init(SDL_Renderer* renderer);
 	int Terminate();
@@ -30,7 +28,8 @@ private:
 	std::string m_TexName;
 	const char* m_TexPath;
 	SDL_Texture* m_Texture;
+	bool m_Terminated = false;
 };
 
 
-#endif // !__TEXTURE__
+#endif // !__TEXTURECACHE_H__

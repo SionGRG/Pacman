@@ -1,4 +1,10 @@
 #include "Game.h"
+#include "Renderer.h"
+#include "GameObject.h"
+#include "Sprite.h"
+#include "TextureCache.h"
+
+
 
 
 Game::Game()
@@ -20,35 +26,16 @@ int Game::Init()
 {
 	m_IsRunning = false;
 
-	/* initialize SDL */
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
-	{
-		assert(0 && "Failed to initialize video!");
-		return errCode;
-	}
-
-	/* Initialise window and renderer */
-	m_Window = SDL_CreateWindow("Pacman", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1024, 768, SDL_WINDOW_OPENGL);
-	m_Renderer = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED);
-
-	if (!m_Window)
-	{
-		assert(0 && "Failed to create window!");
-		return errCode;
-	}
-
-	/* initialize SDL_IMG and SDL_TTF */
-	IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
-
-	if (TTF_Init() == -1)
-	{
-		assert(0 && "Failed to create ttf!");
-		exit(-1);
-	}
+	m_Renderer = new Renderer("Pacman");
 
 	/* Initialise Drawer and Pacman game */
-	m_Drawer = new Drawer(m_Window, m_Renderer);
+	m_Drawer = new Drawer(m_Renderer->GetWindow(), m_Renderer->GetRenderer());
 	m_Pacman = Pacman::Create(m_Drawer);
+
+	// add test game object
+	std::string objName = "Packman";
+	std::string sprName = "PackmanRight";
+	AddGameObject(objName, new GameObject(new Sprite(sprName, new TextureCache(sprName,"open_right_32.png", m_Renderer->GetRenderer())), true));
 
 	m_IsRunning = true;
 	return retCode;
@@ -81,17 +68,26 @@ int Game::Update()
 		float currentFrame = (float)SDL_GetTicks();
 		float elapsedTime = currentFrame - lastFrame;
 
-		if (!m_Pacman->Update(elapsedTime))
-			break;
+		//if (!m_Pacman->Update(elapsedTime))
+		//	break;
+		
+		// Update the game objects
+		for (auto itObj = m_GameObjects.begin(); itObj != m_GameObjects.end(); ++itObj)
+		{
+			itObj->second->Update();
+		}
 
-		SDL_SetRenderDrawColor(m_Renderer, 0, 0, 0, 255);
-		SDL_RenderClear(m_Renderer);
+		SDL_SetRenderDrawColor(m_Renderer->GetRenderer(), 0, 0, 0, 255);
+		SDL_RenderClear(m_Renderer->GetRenderer());
 
-		m_Pacman->Draw();
+		//m_Pacman->Draw();
 
 		lastFrame = currentFrame;
 
-		SDL_RenderPresent(m_Renderer);
+		// Render the game objects
+		m_Renderer->Render(&m_GameObjects);
+
+		SDL_RenderPresent(m_Renderer->GetRenderer());
 		
 		if (k_FrameDelay > elapsedTime)
 			SDL_Delay(k_FrameDelay - elapsedTime);	
@@ -107,12 +103,33 @@ int Game::Terminate()
 	delete m_Pacman;
 	delete m_Drawer;
 
-	SDL_DestroyWindow(m_Window);
-	SDL_DestroyRenderer(m_Renderer);
 
-	TTF_Quit();
-	IMG_Quit();
-	SDL_Quit();
+	// Terminate the Renderer
+	m_Renderer->Terminate();
+	delete m_Renderer;
 
 	return retCode;
+}
+
+int Game::AddGameObject(std::string& objName, GameObject* gameObject)
+{
+	// insert the game object into the storage	
+	m_GameObjects.emplace(objName, gameObject);
+	return retCode;
+}
+
+int Game::RemoveGameObject(std::string& objName)
+{
+	// Remove the game object
+	GameObjectMap::iterator it;
+	it = m_GameObjects.find(objName);
+	m_GameObjects.erase(it);
+
+	return retCode;
+}
+
+GameObject* Game::GetGameObject(std::string& objName)
+{
+	// Retun the game object
+	return m_GameObjects.at(objName);
 }
