@@ -28,9 +28,9 @@ public:
 	int Update();
 	int Terminate();
 	
-	int AddGameObject(std::string& objName, GameObject* gameObject);
-	int RemoveGameObject(std::string& objName);
-	GameObject* GetGameObject(std::string& objName);
+	int AddGameObject(std::string_view objName, GameObject* gameObject);
+	int RemoveGameObject(std::string_view objName);
+	GameObject* GetGameObject(std::string_view objName);
 
 
 	bool Running() { return m_IsRunning; }

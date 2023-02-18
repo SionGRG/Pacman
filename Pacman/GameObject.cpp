@@ -69,14 +69,14 @@ int GameObject::RemoveSprite(Sprite* spr)
 {
 	// Remove the sprite from the sprite container
 	SpriteMap::iterator it;
-	it = m_Sprites.find(spr->GetSpriteName());
+	it = m_Sprites.find(spr->GetSpriteName().data());
 	free(it->second);	// clear sprite memory
 	m_Sprites.erase(it);
 
 	return retCode;
 }
 
-Sprite* GameObject::GetSprite(std::string& sprName)
+Sprite* GameObject::GetSprite(std::string_view sprName)
 {
-	return m_Sprites.at(sprName);
+	return m_Sprites.at(sprName.data());
 }

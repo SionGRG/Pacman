@@ -2,7 +2,7 @@
 #include "ResourceCache.h"
 #include "SDL.h"
 
-Sprite::Sprite(std::string& sprName, SDL_Texture* sprTex)
+Sprite::Sprite(std::string_view sprName, SDL_Texture* sprTex)
 	:m_Name(sprName), m_Texture(sprTex)
 {
 	Init();

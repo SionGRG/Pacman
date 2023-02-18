@@ -24,9 +24,9 @@ public:
 	int Terminate();
 
 	/* Loading an SDL Texture */
-	SDL_Texture* LoadSDLTexture(const std::string& texPath, SDL_Renderer* renderer);
+	SDL_Texture* LoadSDLTexture(std::string_view texPath, SDL_Renderer* renderer);
 	/* Reading data from a JSON file */
-	Json::Value ReadJSONData(std::string& jsonFile);
+	Json::Value ReadJSONData(std::string_view jsonFile);
 
 
 private:

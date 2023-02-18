@@ -131,6 +131,11 @@ Day 6: 18th February 2023
 		- Details: Created a file Loader that contains methods of reading many kinds of files and loading many kinds of data. Created a Resource cache that stores the assets used in a the game, which includes the Textures, text data like JSON data, Sprite Data, (in the future) Audio Data, etc. Added a C++ JSON Parser library.
 		- ETA: 3 hrs 00 min
 		
+	* Task 12: Optimising String Memory Usage and moved to C++17  
+		- Details: Moved to using C++ 17. Optimised the string memory allocations by using std::string_view from C++17.
+
+		- ETA: 20 min
+		
 		
 	* Task X: 
 		- Details: 

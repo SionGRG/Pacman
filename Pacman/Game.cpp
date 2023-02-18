@@ -115,25 +115,25 @@ int Game::Terminate()
 	return retCode;
 }
 
-int Game::AddGameObject(std::string& objName, GameObject* gameObject)
+int Game::AddGameObject(std::string_view objName, GameObject* gameObject)
 {
 	// insert the game object into the storage	
 	m_GameObjects.emplace(objName, gameObject);
 	return retCode;
 }
 
-int Game::RemoveGameObject(std::string& objName)
+int Game::RemoveGameObject(std::string_view objName)
 {
 	// Remove the game object
 	GameObjectMap::iterator it;
-	it = m_GameObjects.find(objName);
+	it = m_GameObjects.find(objName.data());
 	m_GameObjects.erase(it);
 
 	return retCode;
 }
 
-GameObject* Game::GetGameObject(std::string& objName)
+GameObject* Game::GetGameObject(std::string_view objName)
 {
 	// Retun the game object
-	return m_GameObjects.at(objName);
+	return m_GameObjects.at(objName.data());
 }

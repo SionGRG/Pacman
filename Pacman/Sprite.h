@@ -13,7 +13,7 @@ class Sprite
 {
 public:
 	Sprite() {}
-	Sprite(std::string& sprName, SDL_Texture* sprTex);
+	Sprite(std::string_view sprName, SDL_Texture* sprTex);
 	~Sprite();
 	
 	int Init();
@@ -21,7 +21,7 @@ public:
 	int Terminate();
 
 	SDL_Texture* GetTexture() { return m_Texture; }
-	std::string& GetSpriteName() { return m_Name; }
+	std::string_view GetSpriteName() { return m_Name; }
 
 	bool m_Active = false;	// by default its asleep and should not render or update
 private:

@@ -26,7 +26,7 @@ public:
 	// Sprite Functions
 	int AddSprite(Sprite* spr, bool activate);
 	int RemoveSprite(Sprite* spr);
-	Sprite* GetSprite(std::string& sprName);
+	Sprite* GetSprite(std::string_view sprName);
 	
 
 	bool m_Active = false ;	// by default its asleep and should not render or update

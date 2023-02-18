@@ -30,9 +30,9 @@ public:
 	int Terminate();
 
 	// Texture Functions
-	int AddTexture(const std::string& texName,const std::string& texPath, SDL_Renderer* renderer);
-	int RemoveTexture(std::string& texName);
-	SDL_Texture* GetTexture(const std::string& texName);
+	int AddTexture(std::string_view texName, std::string_view texPath, SDL_Renderer* renderer);
+	int RemoveTexture(std::string_view texName);
+	SDL_Texture* GetTexture(std::string_view texName);
 
 private:
 

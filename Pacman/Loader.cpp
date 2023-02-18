@@ -27,21 +27,21 @@ int Loader::Terminate()
 	return retCode;
 }
 
-SDL_Texture* Loader::LoadSDLTexture(const std::string& texPath, SDL_Renderer* renderer)
+SDL_Texture* Loader::LoadSDLTexture(std::string_view texPath, SDL_Renderer* renderer)
 {
-	SDL_Surface* texSurface = IMG_Load(texPath.c_str());
+	SDL_Surface* texSurface = IMG_Load(texPath.data());
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, texSurface);
 	SDL_FreeSurface(texSurface);
 
 	return texture;
 }
 
-Json::Value Loader::ReadJSONData(std::string& jsonFile)
+Json::Value Loader::ReadJSONData(std::string_view jsonFile)
 {
 	Json::Reader reader;
 	Json::Value root;
 
-	std::ifstream fJsonData(jsonFile);
+	std::ifstream fJsonData(jsonFile.data());
 	reader.parse(fJsonData, root, false);
 	return root;
 }
