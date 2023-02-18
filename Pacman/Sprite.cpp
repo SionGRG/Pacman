@@ -1,8 +1,8 @@
 #include "Sprite.h"
-#include "TextureCache.h"
+#include "ResourceCache.h"
+#include "SDL.h"
 
-
-Sprite::Sprite(std::string& sprName, TextureCache* sprTex)
+Sprite::Sprite(std::string& sprName, SDL_Texture* sprTex)
 	:m_Name(sprName), m_Texture(sprTex)
 {
 	Init();
@@ -39,9 +39,4 @@ int Sprite::Terminate()
 		m_Terminated = true;
 	}
 	return retCode;
-}
-
-SDL_Texture* Sprite::GetTexture()
-{
-	return m_Texture->GetTexture();
 }

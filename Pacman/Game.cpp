@@ -2,7 +2,7 @@
 #include "Renderer.h"
 #include "GameObject.h"
 #include "Sprite.h"
-#include "TextureCache.h"
+#include "ResourceCache.h"
 
 
 
@@ -28,14 +28,18 @@ int Game::Init()
 
 	m_Renderer = new Renderer("Pacman");
 
+	/* Initialise the Resourses cache */
+	m_Cache = new ResourceCache();
+	m_Cache->AddTexture("Lv1Spritesheet", "PacmanSpritesheet.png", m_Renderer->GetSDLRenderer());
+
 	/* Initialise Drawer and Pacman game */
-	m_Drawer = new Drawer(m_Renderer->GetWindow(), m_Renderer->GetRenderer());
+	m_Drawer = new Drawer(m_Renderer->GetWindow(), m_Renderer->GetSDLRenderer());
 	m_Pacman = Pacman::Create(m_Drawer);
 
 	// add test game object
 	std::string objName = "Packman";
 	std::string sprName = "PackmanRight";
-	AddGameObject(objName, new GameObject(new Sprite(sprName, new TextureCache(sprName,"open_right_32.png", m_Renderer->GetRenderer())), true));
+	AddGameObject(objName, new GameObject(new Sprite(sprName, m_Cache->GetTexture("Lv1Spritesheet")), true));
 
 	m_IsRunning = true;
 	return retCode;
@@ -77,8 +81,8 @@ int Game::Update()
 			itObj->second->Update();
 		}
 
-		SDL_SetRenderDrawColor(m_Renderer->GetRenderer(), 0, 0, 0, 255);
-		SDL_RenderClear(m_Renderer->GetRenderer());
+		SDL_SetRenderDrawColor(m_Renderer->GetSDLRenderer(), 0, 0, 0, 255);
+		SDL_RenderClear(m_Renderer->GetSDLRenderer());
 
 		//m_Pacman->Draw();
 
@@ -87,7 +91,7 @@ int Game::Update()
 		// Render the game objects
 		m_Renderer->Render(&m_GameObjects);
 
-		SDL_RenderPresent(m_Renderer->GetRenderer());
+		SDL_RenderPresent(m_Renderer->GetSDLRenderer());
 		
 		if (k_FrameDelay > elapsedTime)
 			SDL_Delay(k_FrameDelay - elapsedTime);	

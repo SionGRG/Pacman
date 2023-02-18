@@ -74,7 +74,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\libs\SDL2-2.0.5\include;..\libs\SDL2_image-2.0.1\include;..\libs\SDL2_ttf-2.0.14\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\libs\SDL2-2.0.5\include;..\libs\SDL2_image-2.0.1\include;..\libs\SDL2_ttf-2.0.14\include;..\libs\Json\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\libs\SDL2-2.0.5\lib\x86\SDL2.lib;..\libs\SDL2-2.0.5\lib\x86\SDL2main.lib;..\libs\SDL2_image-2.0.1\lib\x86\SDL2_image.lib;..\libs\SDL2_ttf-2.0.14\lib\x86\SDL2_ttf.lib</AdditionalDependencies>
@@ -119,6 +120,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\libs\Json\dist\jsoncpp.cpp" />
     <ClCompile Include="Avatar.cpp" />
     <ClCompile Include="BigDot.cpp" />
     <ClCompile Include="Cherry.cpp" />
@@ -128,6 +130,7 @@
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Ghost.cpp" />
+    <ClCompile Include="Loader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MovableGameEntity.cpp" />
     <ClCompile Include="Pacman.cpp" />
@@ -135,11 +138,23 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StaticGameEntity.cpp" />
-    <ClCompile Include="TextureCache.cpp" />
+    <ClCompile Include="ResourceCache.cpp" />
     <ClCompile Include="Vector2f.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\libs\Json\dist\json\json-forwards.h" />
+    <ClInclude Include="..\libs\Json\dist\json\json.h" />
+    <ClInclude Include="..\libs\Json\inc\json\allocator.h" />
+    <ClInclude Include="..\libs\Json\inc\json\assertions.h" />
+    <ClInclude Include="..\libs\Json\inc\json\config.h" />
+    <ClInclude Include="..\libs\Json\inc\json\forwards.h" />
+    <ClInclude Include="..\libs\Json\inc\json\json.h" />
+    <ClInclude Include="..\libs\Json\inc\json\json_features.h" />
+    <ClInclude Include="..\libs\Json\inc\json\reader.h" />
+    <ClInclude Include="..\libs\Json\inc\json\value.h" />
+    <ClInclude Include="..\libs\Json\inc\json\version.h" />
+    <ClInclude Include="..\libs\Json\inc\json\writer.h" />
     <ClInclude Include="Avatar.h" />
     <ClInclude Include="BigDot.h" />
     <ClInclude Include="Cherry.h" />
@@ -150,13 +165,14 @@
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Ghost.h" />
+    <ClInclude Include="Loader.h" />
     <ClInclude Include="MovableGameEntity.h" />
     <ClInclude Include="Pacman.h" />
     <ClInclude Include="PathmapTile.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StaticGameEntity.h" />
-    <ClInclude Include="TextureCache.h" />
+    <ClInclude Include="ResourceCache.h" />
     <ClInclude Include="Vector2f.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

@@ -14,6 +14,7 @@
 #include "DataStructures.h"
 
 class Renderer;
+class ResourceCache;
 
 class Game
 {
@@ -39,6 +40,8 @@ private:
 	Pacman* m_Pacman;
 	Drawer* m_Drawer;
 	bool m_IsRunning;
+
+	ResourceCache* m_Cache;
 
 	GameObjectMap m_GameObjects;
 	GameObject* obj;

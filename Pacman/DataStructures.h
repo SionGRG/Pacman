@@ -8,11 +8,14 @@
 #define retCode 0
 #define errCode -1
 
+
+struct SDL_Texture;
+typedef std::unordered_map<std::string, SDL_Texture*> TextureMap;
+
 class Sprite;
-class GameObject;
-
-
 typedef std::unordered_map<std::string, Sprite*> SpriteMap;
+
+class GameObject;
 typedef std::unordered_map<std::string, GameObject*> GameObjectMap;
 
 

@@ -20,7 +20,7 @@ public:
 	int Terminate();
 
 	SDL_Window* GetWindow() { return m_Window; }
-	SDL_Renderer* GetRenderer() { return m_Renderer; }
+	SDL_Renderer* GetSDLRenderer() { return m_Renderer; }
 private:
 
 	SDL_Window* m_Window;

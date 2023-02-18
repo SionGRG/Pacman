@@ -10,7 +10,10 @@ GameObject::GameObject(Sprite* spr, bool activate = false)
 
 GameObject::~GameObject()
 {
-	Terminate();
+	if (!m_Terminated)
+	{
+		Terminate();
+	}
 }
 
 int GameObject::Init(Sprite* spr)
@@ -39,19 +42,16 @@ int GameObject::Update()
 
 int GameObject::Terminate()
 {
-	if (!m_Terminated)
+	// Clear sprite memory
+	for (SpriteMap::iterator itSpr = m_Sprites.begin(); itSpr != m_Sprites.end(); ++itSpr)
 	{
-		// Clear sprite memory
-		for (SpriteMap::iterator itSpr = m_Sprites.begin(); itSpr != m_Sprites.end(); ++itSpr)
-		{
-			itSpr->second->Terminate();
-			itSpr->second = nullptr;
-			free(itSpr->second);
-		}
-		m_Sprites.clear();
-
-		m_Terminated = true;
+		itSpr->second->Terminate();
+		itSpr->second = nullptr;
+		free(itSpr->second);
 	}
+	m_Sprites.clear();
+
+	m_Terminated = true;
 
 	return retCode;
 }

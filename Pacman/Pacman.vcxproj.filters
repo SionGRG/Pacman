@@ -31,6 +31,21 @@
     <Filter Include="Engine\Game Objects">
       <UniqueIdentifier>{cc216fd6-e234-4a14-90a6-317aaef1362d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\FileLoader">
+      <UniqueIdentifier>{615337b5-f631-4e92-91f6-0547d4de93d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Includes">
+      <UniqueIdentifier>{f7c9407f-06f3-4592-882f-2233995f7ce0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Includes\Json">
+      <UniqueIdentifier>{5564da75-9d25-4bc5-8973-0091f2ccbd9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Includes\Json\dist">
+      <UniqueIdentifier>{4ab231c3-43e7-451e-856a-f9b554807747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Includes\Json\inc">
+      <UniqueIdentifier>{3db4b5d4-7257-481f-8093-43cf93391d43}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Pacman.cpp">
@@ -79,7 +94,7 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Engine\Game Objects</Filter>
     </ClCompile>
-    <ClCompile Include="TextureCache.cpp">
+    <ClCompile Include="ResourceCache.cpp">
       <Filter>Engine\Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
@@ -87,6 +102,12 @@
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>Engine\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Loader.cpp">
+      <Filter>Engine\FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\libs\Json\dist\jsoncpp.cpp">
+      <Filter>Engine\Includes\Json\dist</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -135,7 +156,7 @@
     <ClInclude Include="GameObject.h">
       <Filter>Engine\Game Objects</Filter>
     </ClInclude>
-    <ClInclude Include="TextureCache.h">
+    <ClInclude Include="ResourceCache.h">
       <Filter>Engine\Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="DataStructures.h">
@@ -146,6 +167,45 @@
     </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>Engine\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Loader.h">
+      <Filter>Engine\FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\Json\inc\json\allocator.h">
+      <Filter>Engine\Includes\Json\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\Json\inc\json\assertions.h">
+      <Filter>Engine\Includes\Json\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\Json\inc\json\config.h">
+      <Filter>Engine\Includes\Json\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\Json\inc\json\forwards.h">
+      <Filter>Engine\Includes\Json\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\Json\inc\json\json.h">
+      <Filter>Engine\Includes\Json\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\Json\inc\json\json_features.h">
+      <Filter>Engine\Includes\Json\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\Json\inc\json\reader.h">
+      <Filter>Engine\Includes\Json\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\Json\inc\json\value.h">
+      <Filter>Engine\Includes\Json\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\Json\inc\json\version.h">
+      <Filter>Engine\Includes\Json\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\Json\inc\json\writer.h">
+      <Filter>Engine\Includes\Json\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\Json\dist\json\json.h">
+      <Filter>Engine\Includes\Json\dist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\Json\dist\json\json-forwards.h">
+      <Filter>Engine\Includes\Json\dist</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

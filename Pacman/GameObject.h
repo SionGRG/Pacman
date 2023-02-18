@@ -6,6 +6,10 @@
 
 class Sprite;
 
+/*
+	This class contains the structure of the game object 
+	* It contains the data and methods of the game object
+*/
 class GameObject
 {
 public:

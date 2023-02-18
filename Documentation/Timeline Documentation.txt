@@ -49,6 +49,7 @@ Stretch Goals:
 	- improve the enemy AI movement
 	- add more enemies to the level
 	- add more levels (possibly)
+	- add audio and audio effects
 	- speed the engine and game with multi-threading both loading and gameplay
 
 
@@ -122,7 +123,15 @@ Day 5: 17th February 2023
 		- ETA: 20 min
 		
 				
+Day 6: 18th February 2023
 				
+	-> Brief: Engine Architecture Overhaul Part 2
+
+	* Task 11: Engine Architecture Overhaul Part 2
+		- Details: Created a file Loader that contains methods of reading many kinds of files and loading many kinds of data. Created a Resource cache that stores the assets used in a the game, which includes the Textures, text data like JSON data, Sprite Data, (in the future) Audio Data, etc. Added a C++ JSON Parser library.
+		- ETA: 3 hrs 00 min
+		
+		
 	* Task X: 
 		- Details: 
 		- ETA: -- hrs -- min
