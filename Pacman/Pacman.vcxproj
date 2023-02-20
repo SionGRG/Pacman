@@ -179,6 +179,9 @@
   <ItemGroup>
     <Text Include="..\Documentation\Timeline Documentation.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\data\PacmanAtlasData.json" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

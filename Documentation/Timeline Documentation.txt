@@ -44,8 +44,8 @@ Main Goals:
 
 Stretch Goals:
 	- sprite animation
-	- make spritesheets for animation
-	- make a texture atlas of all the textures to save on loading
+✓	- make spritesheets for animation
+✓	- make a texture atlas of all the textures to save on loading
 	- improve the enemy AI movement
 	- add more enemies to the level
 	- add more levels (possibly)
@@ -133,8 +133,16 @@ Day 6: 18th February 2023
 		
 	* Task 12: Optimising String Memory Usage and moved to C++17  
 		- Details: Moved to using C++ 17. Optimised the string memory allocations by using std::string_view from C++17.
-
 		- ETA: 20 min
+		
+
+Day 7: 20th February 2023
+
+	-> Brief: Engine Architecture Overhaul Part 3
+
+	* Task 13: Engine Architecture Overhaul Part 3
+		- Details: Now loads Sprite atlas data to the game from the JSON file. Can now render a sprite with a texture rect from the sprite sheet using the sprite information from the JSON data.
+		- ETA: 2 hrs 00 min
 		
 		
 	* Task X: 

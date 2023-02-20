@@ -34,11 +34,16 @@ public:
 	int RemoveTexture(std::string_view texName);
 	SDL_Texture* GetTexture(std::string_view texName);
 
+	// Sprite Data Functions
+	int LoadAtlasData(std::string_view atlasJsonData);
+	SpriteData* GetSpriteData(std::string_view spriteName);
+
 private:
 
 	Loader* m_Loader;
 	
 	TextureMap m_Textures;
+	SpriteAtlasMap m_SpriteAtlasData;
 
 
 	bool m_Terminated = false;

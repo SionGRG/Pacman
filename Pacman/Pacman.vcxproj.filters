@@ -28,9 +28,6 @@
     <Filter Include="Engine\Graphics\Renderer">
       <UniqueIdentifier>{a80cb03b-c942-440a-9e6b-3fb6212eda33}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Game Objects">
-      <UniqueIdentifier>{cc216fd6-e234-4a14-90a6-317aaef1362d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\FileLoader">
       <UniqueIdentifier>{615337b5-f631-4e92-91f6-0547d4de93d0}</UniqueIdentifier>
     </Filter>
@@ -45,6 +42,12 @@
     </Filter>
     <Filter Include="Engine\Includes\Json\inc">
       <UniqueIdentifier>{3db4b5d4-7257-481f-8093-43cf93391d43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Data">
+      <UniqueIdentifier>{c7353991-fecc-452f-a8b8-c415bece876c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\System">
+      <UniqueIdentifier>{cc216fd6-e234-4a14-90a6-317aaef1362d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -92,13 +95,13 @@
       <Filter>Engine\Graphics\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>Engine\Game Objects</Filter>
+      <Filter>Engine\System</Filter>
     </ClCompile>
     <ClCompile Include="ResourceCache.cpp">
-      <Filter>Engine\Game Objects</Filter>
+      <Filter>Engine\System</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>Engine\Game Objects</Filter>
+      <Filter>Engine\System</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>Engine\Graphics\Renderer</Filter>
@@ -154,16 +157,16 @@
       <Filter>Engine\Graphics\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Engine\Game Objects</Filter>
+      <Filter>Engine\System</Filter>
     </ClInclude>
     <ClInclude Include="ResourceCache.h">
-      <Filter>Engine\Game Objects</Filter>
+      <Filter>Engine\System</Filter>
     </ClInclude>
     <ClInclude Include="DataStructures.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
-      <Filter>Engine\Game Objects</Filter>
+      <Filter>Engine\System</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>Engine\Graphics\Renderer</Filter>
@@ -210,5 +213,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Documentation\Timeline Documentation.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\data\PacmanAtlasData.json">
+      <Filter>Game\Data</Filter>
+    </None>
   </ItemGroup>
 </Project>
