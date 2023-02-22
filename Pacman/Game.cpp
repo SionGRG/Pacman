@@ -41,8 +41,8 @@ int Game::Init()
 
 	// add test game objects
 	AddGameObject("Playfield", new GameObject(new Sprite(m_Cache->GetSpriteData("Playfield"), m_Cache->GetTexture("Lv1Spritesheet"), 0, 0), true));
-	AddGameObject("PackmanOLeft", new GameObject(new Sprite(m_Cache->GetSpriteData("Pacman_Open_left_32"), m_Cache->GetTexture("Lv1Spritesheet"), 200, 200), true));
-	AddGameObject("PackmanCRight", new GameObject(new Sprite(m_Cache->GetSpriteData("Pacman_Closed_right_32"), m_Cache->GetTexture("Lv1Spritesheet"), 100, 150), true));
+	AddGameObject("PackmanLeft", new GameObject(new Sprite(m_Cache->GetSpriteData("Pacman_left_32"), m_Cache->GetTexture("Lv1Spritesheet"), 200, 200), true));
+	AddGameObject("PackmanCRight", new GameObject(new Sprite(m_Cache->GetSpriteData("Pacman_right_32"), m_Cache->GetTexture("Lv1Spritesheet"), 100, 150), true));
 	AddGameObject("RedGhost", new GameObject(new Sprite(m_Cache->GetSpriteData("ghost_red_32"), m_Cache->GetTexture("Lv1Spritesheet"), 150, 150), true));
 	AddGameObject("RedGhost1", new GameObject(new Sprite(m_Cache->GetSpriteData("ghost_red_32"), m_Cache->GetTexture("Lv1Spritesheet"), 150, 150), true));
 	AddGameObject("RedGhost", new GameObject(new Sprite(m_Cache->GetSpriteData("ghost_red_32"), m_Cache->GetTexture("Lv1Spritesheet"), 120, 150), true));
@@ -103,7 +103,7 @@ int Game::Update()
 		// Update the game objects
 		for (auto itObj = m_GameObjects.begin(); itObj != m_GameObjects.end(); ++itObj)
 		{
-			itObj->second->Update();
+			itObj->second->Update(elapsedTime);
 		}
 
 		SDL_SetRenderDrawColor(m_Renderer->GetSDLRenderer(), 0, 0, 0, 255);

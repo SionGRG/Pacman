@@ -24,7 +24,7 @@ int GameObject::Init(Sprite* spr)
 	return retCode;
 }
 
-int GameObject::Update()
+int GameObject::Update(float& elapsedTime)
 {
 	// Only update the Gameobjects that are active
 	if (m_Active)
@@ -33,7 +33,7 @@ int GameObject::Update()
 		for (auto itSpr = m_Sprites.begin(); itSpr != m_Sprites.end(); ++itSpr)
 		{
 			if (itSpr->second->m_Active) // only the active ones
-				itSpr->second->Update();
+				itSpr->second->Update(elapsedTime);
 		}
 	}
 

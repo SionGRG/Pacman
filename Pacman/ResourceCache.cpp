@@ -78,16 +78,28 @@ int ResourceCache::LoadAtlasData(std::string_view atlasJsonData)
 	{
 		sprData.Name = root["frames"][i]["filename"].asCString(),
 
-		sprData.TexRect = RECT{
-			root["frames"][i]["frame"]["x"].asInt(),
-			root["frames"][i]["frame"]["y"].asInt(),
-			root["frames"][i]["frame"]["w"].asInt(),
-			root["frames"][i]["frame"]["h"].asInt()
-		},
-
-		sprData.Size = v2(
+		sprData.TexRect = RECTF{
+			root["frames"][i]["frame"]["x"].asFloat(),
+			root["frames"][i]["frame"]["y"].asFloat(),
 			root["frames"][i]["frame"]["w"].asFloat(),
 			root["frames"][i]["frame"]["h"].asFloat()
+		},
+		sprData.Size = v2(
+			root["frames"][i]["frame"]["w"].asFloat() / root["frames"][i]["grid"]["columns"].asInt(),
+			root["frames"][i]["frame"]["h"].asFloat() / root["frames"][i]["grid"]["rows"].asInt()
+		),
+
+		sprData.Gridded = root["frames"][i]["gridded"].asBool(),
+
+		sprData.Animated = root["frames"][i]["animated"].asBool(),
+
+		sprData.Loop = root["frames"][i]["loop"].asBool(),
+
+		sprData.Rate = root["frames"][i]["rate"].asFloat(),
+
+		sprData.Grid = v2(
+			root["frames"][i]["grid"]["columns"].asInt(),
+			root["frames"][i]["grid"]["rows"].asInt()
 		);
 
 		// Add sprite to the atlas data

@@ -112,6 +112,9 @@
     <ClCompile Include="..\libs\Json\dist\jsoncpp.cpp">
       <Filter>Engine\Includes\Json\dist</Filter>
     </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Engine\System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pacman.h">
@@ -209,6 +212,9 @@
     </ClInclude>
     <ClInclude Include="..\libs\Json\dist\json\json-forwards.h">
       <Filter>Engine\Includes\Json\dist</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Engine\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

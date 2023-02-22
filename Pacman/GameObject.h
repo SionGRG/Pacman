@@ -18,7 +18,7 @@ public:
 	~GameObject();
 
 	int Init(Sprite* spr);
-	int Update();
+	int Update(float& elapsedTime);
 	int Terminate();
 
 	SpriteMap* GetSprites() { return &m_Sprites; }

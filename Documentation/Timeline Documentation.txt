@@ -40,10 +40,11 @@ Main Goals:
 	- fix the memory leak problem that causes the game to crash after some time
 	- fix the framerate, and get the game to a playable state
 	- fix the collision detection, especially after the player dies
+	- make a playable level; Pacman can move around and collect the dots, and the ghosts chase him
 
 
 Stretch Goals:
-	- sprite animation
+✓	- sprite animation
 ✓	- make spritesheets for animation
 ✓	- make a texture atlas of all the textures to save on loading
 	- improve the enemy AI movement
@@ -136,7 +137,7 @@ Day 6: 18th February 2023
 		- ETA: 20 min
 		
 
-Day 7: 20th February 2023
+Day 7 & 8: 19th & 20th February 2023
 
 	-> Brief: Engine Architecture Overhaul Part 3
 
@@ -144,8 +145,17 @@ Day 7: 20th February 2023
 		- Details: Now loads Sprite atlas data to the game from the JSON file. Can now render a sprite with a texture rect from the sprite sheet using the sprite information from the JSON data.
 		- ETA: 2 hrs 00 min
 		
+
+Day 9 & 10: 21st & 22nd February 2023
+
+	-> Brief: Engine Architecture Overhaul Part 4
+		
+	* Task 14: Added sprite animations for animated sprite sheets
+		- Details: created an animation class to animate 2D sprites. Rebuilt the Sprite sheet texture file to contain gridded spritesheets suitable for animation. Updated the Sprite Data JSON File to contain information about the sprite's animation. Added a custom RECT struct that's easier to work with compared to the SDL_Rect.
+		- ETA: 3 hrs 00 min
+		
+			
 		
 	* Task X: 
 		- Details: 
 		- ETA: -- hrs -- min
-		
