@@ -49,6 +49,12 @@
     <Filter Include="Engine\System">
       <UniqueIdentifier>{cc216fd6-e234-4a14-90a6-317aaef1362d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GameObjects">
+      <UniqueIdentifier>{f2526899-98f6-440f-973c-10a24ee6ca9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Levels">
+      <UniqueIdentifier>{19594020-1222-4bd2-ae79-3e155f0b5019}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Pacman.cpp">
@@ -114,6 +120,12 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Engine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Engine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="PacmanLv1.cpp">
+      <Filter>Game\Levels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -216,9 +228,18 @@
     <ClInclude Include="Animation.h">
       <Filter>Engine\System</Filter>
     </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="PacmanLv1.h">
+      <Filter>Game\Levels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Documentation\Timeline Documentation.txt" />
+    <Text Include="..\data\map.txt">
+      <Filter>Game\Data</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\data\PacmanAtlasData.json">

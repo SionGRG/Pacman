@@ -15,6 +15,7 @@
 
 class Renderer;
 class ResourceCache;
+class PacmanLv1;
 
 class Game
 {
@@ -28,11 +29,6 @@ public:
 	int Update();
 	int Terminate();
 	
-	int AddGameObject(std::string_view objName, GameObject* gameObject);
-	int RemoveGameObject(std::string_view objName);
-	GameObject* GetGameObject(std::string_view objName);
-
-
 	bool Running() { return m_IsRunning; }
 
 private:
@@ -42,10 +38,7 @@ private:
 	bool m_IsRunning;
 
 	ResourceCache* m_Cache;
-
-	GameObjectMap m_GameObjects;
-	GameObject* obj;
-
+	PacmanLv1* m_Level01;
 	/* Initialise the Game FPS */
 	const float k_FPS = 60.f;
 	const float k_FrameDelay = 1000 / k_FPS;

@@ -52,6 +52,7 @@ Stretch Goals:
 	- add more levels (possibly)
 	- add audio and audio effects
 	- speed the engine and game with multi-threading both loading and gameplay
+	- added the onscreen text, i.e. currennt score and lives remaining
 
 
 
@@ -154,6 +155,10 @@ Day 9 & 10: 21st & 22nd February 2023
 		- Details: created an animation class to animate 2D sprites. Rebuilt the Sprite sheet texture file to contain gridded spritesheets suitable for animation. Updated the Sprite Data JSON File to contain information about the sprite's animation. Added a custom RECT struct that's easier to work with compared to the SDL_Rect.
 		- ETA: 3 hrs 00 min
 		
+	* Task 15: Added levels to the game
+		- Details: Added level class to support creating multiple levels (in the future). Created the Pacman level 1, next I will be adding the gameplay features and objects with the help of the map.txt data. Added the map.txt to the sln project.
+		- ETA: 2 hrs 10 min
+					
 			
 		
 	* Task X: 

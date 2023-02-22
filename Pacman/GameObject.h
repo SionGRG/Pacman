@@ -15,7 +15,7 @@ class GameObject
 public:
 	GameObject() {}
 	GameObject(Sprite* spr, bool activate);
-	~GameObject();
+	virtual ~GameObject();
 
 	int Init(Sprite* spr);
 	int Update(float& elapsedTime);

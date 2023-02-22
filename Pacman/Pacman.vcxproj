@@ -131,10 +131,12 @@
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Ghost.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MovableGameEntity.cpp" />
     <ClCompile Include="Pacman.cpp" />
+    <ClCompile Include="PacmanLv1.cpp" />
     <ClCompile Include="PathmapTile.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -167,9 +169,11 @@
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Ghost.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="Loader.h" />
     <ClInclude Include="MovableGameEntity.h" />
     <ClInclude Include="Pacman.h" />
+    <ClInclude Include="PacmanLv1.h" />
     <ClInclude Include="PathmapTile.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Sprite.h" />
@@ -179,6 +183,7 @@
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\data\map.txt" />
     <Text Include="..\Documentation\Timeline Documentation.txt" />
   </ItemGroup>
   <ItemGroup>
