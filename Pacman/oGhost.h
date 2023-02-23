@@ -7,11 +7,11 @@
 class World;
 class PathmapTile;
 
-class Ghost : public MovableGameEntity
+class oGhost : public MovableGameEntity
 {
 public:
-	Ghost(const Vector2f& aPosition);
-	~Ghost(void);
+	oGhost(const Vector2f& aPosition);
+	~oGhost(void);
 
 	void Update(float aTime, World* aWorld);
 

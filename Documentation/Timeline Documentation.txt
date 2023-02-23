@@ -160,7 +160,16 @@ Day 9 & 10: 21st & 22nd February 2023
 		- ETA: 2 hrs 10 min
 					
 			
+Day 11: 23rd February 2023
 		
+	-> Brief: Refining Gameplay Part 1
+
+	* Task 16: Separating the old Pacman project with the new version
+		- Details: Separating the old Pacman project with the new version, the old one has an "o" prefix on some of its files and classes.
+		- ETA: 25 min
+		
+
+
 	* Task X: 
 		- Details: 
 		- ETA: -- hrs -- min

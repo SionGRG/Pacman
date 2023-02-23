@@ -4,11 +4,11 @@
 #include "StaticGameEntity.h"
 #include "Vector2f.h"
 
-class Cherry : public StaticGameEntity
+class oCherry : public StaticGameEntity
 {
 public:
-	Cherry(Vector2f aPosition);
-	~Cherry(void);
+	oCherry(Vector2f aPosition);
+	~oCherry(void);
 };
 
 #endif // CHERRY_H

@@ -1,16 +1,16 @@
-#include "Avatar.h"
+#include "oAvatar.h"
 
-Avatar::Avatar(const Vector2f& aPosition)
+oAvatar::oAvatar(const Vector2f& aPosition)
 : MovableGameEntity(aPosition, "open_32.png")
 {
 
 }
 
-Avatar::~Avatar(void)
+oAvatar::~oAvatar(void)
 {
 }
 
-void Avatar::Update(float aTime)
+void oAvatar::Update(float aTime)
 {
 	int tileSize = 22;
 

@@ -6,9 +6,9 @@
 
 class Drawer;
 class PathmapTile;
-class Dot;
-class BigDot;
-class Cherry;
+class oDot;
+class oBigDot;
+class oCherry;
 
 class World
 {
@@ -41,9 +41,9 @@ private:
 	bool InitBigDots();
 
 	std::list<PathmapTile*> myPathmapTiles;
-	std::list<Dot*> myDots;
-	std::list<BigDot*> myBigDots;
-	std::list<Cherry*> myCherry;
+	std::list<oDot*> myDots;
+	std::list<oBigDot*> myBigDots;
+	std::list<oCherry*> myCherry;
 
 };
 

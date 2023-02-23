@@ -1,9 +1,9 @@
-#include "Ghost.h"
+#include "oGhost.h"
 #include "World.h"
 #include "PathmapTile.h"
 #include "Drawer.h"
 
-Ghost::Ghost(const Vector2f& aPosition)
+oGhost::oGhost(const Vector2f& aPosition)
 : MovableGameEntity(aPosition, "ghost_32.png")
 {
 	myIsClaimableFlag = false;
@@ -13,17 +13,17 @@ Ghost::Ghost(const Vector2f& aPosition)
 	myDesiredMovementY = -1;
 }
 
-Ghost::~Ghost(void)
+oGhost::~oGhost(void)
 {
 }
 
-void Ghost::Die(World* aWorld)
+void oGhost::Die(World* aWorld)
 {
 	myPath.clear();
 	aWorld->GetPath(myCurrentTileX, myCurrentTileY, 13, 13, myPath);
 }
 
-void Ghost::Update(float aTime, World* aWorld)
+void oGhost::Update(float aTime, World* aWorld)
 {
 	float speed = 30.f;
 	int nextTileX = GetCurrentTileX() + myDesiredMovementX;
@@ -87,12 +87,12 @@ void Ghost::Update(float aTime, World* aWorld)
 	}
 }
 
-void Ghost::SetImage(const char* anImage)
+void oGhost::SetImage(const char* anImage)
 {
 	myImage = anImage;
 }
 
-void Ghost::Draw(Drawer* aDrawer)
+void oGhost::Draw(Drawer* aDrawer)
 {
 	if (myIsDeadFlag)
 		aDrawer->Draw("Ghost_Dead_32.png", (int)myPosition.myX + 220, (int)myPosition.myY + 60);

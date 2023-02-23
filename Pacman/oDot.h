@@ -4,11 +4,11 @@
 #include "StaticGameEntity.h"
 #include "Vector2f.h"
 
-class Dot : public StaticGameEntity
+class oDot : public StaticGameEntity
 {
 public:
-	Dot(Vector2f aPosition);
-	~Dot(void);
+	oDot(Vector2f aPosition);
+	~oDot(void);
 };
 
 #endif // DOT_H

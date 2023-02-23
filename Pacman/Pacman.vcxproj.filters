@@ -4,18 +4,6 @@
     <Filter Include="Game">
       <UniqueIdentifier>{f35df93c-31bf-4fe5-8c56-70582126ca34}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Game entities">
-      <UniqueIdentifier>{f58e9c74-955c-4053-aeb9-45aeae8568c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Game entities\Static">
-      <UniqueIdentifier>{8e80d2fc-ffcf-4187-b541-d35a283721ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Game entities\Movable">
-      <UniqueIdentifier>{534d0c22-4923-4d78-b772-8511e1871aa9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\World">
-      <UniqueIdentifier>{cf8fdefa-6d25-49ff-99c5-564e289a7b61}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine">
       <UniqueIdentifier>{8160bf35-2231-45a5-83cf-64c3e14b0d22}</UniqueIdentifier>
     </Filter>
@@ -55,40 +43,52 @@
     <Filter Include="Game\Levels">
       <UniqueIdentifier>{19594020-1222-4bd2-ae79-3e155f0b5019}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\OldPacman">
+      <UniqueIdentifier>{ef152817-ca1d-48cd-a0e1-6a8c3186a021}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\OldPacman\World">
+      <UniqueIdentifier>{cf8fdefa-6d25-49ff-99c5-564e289a7b61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\OldPacman\Game entities">
+      <UniqueIdentifier>{f58e9c74-955c-4053-aeb9-45aeae8568c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\OldPacman\Game entities\Static">
+      <UniqueIdentifier>{8e80d2fc-ffcf-4187-b541-d35a283721ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\OldPacman\Game entities\Movable">
+      <UniqueIdentifier>{534d0c22-4923-4d78-b772-8511e1871aa9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Pacman.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="GameEntity.cpp">
-      <Filter>Game\Game entities</Filter>
+      <Filter>Game\OldPacman\Game entities</Filter>
     </ClCompile>
-    <ClCompile Include="BigDot.cpp">
-      <Filter>Game\Game entities\Static</Filter>
+    <ClCompile Include="oBigDot.cpp">
+      <Filter>Game\OldPacman\Game entities\Static</Filter>
     </ClCompile>
-    <ClCompile Include="Cherry.cpp">
-      <Filter>Game\Game entities\Static</Filter>
+    <ClCompile Include="oCherry.cpp">
+      <Filter>Game\OldPacman\Game entities\Static</Filter>
     </ClCompile>
-    <ClCompile Include="Dot.cpp">
-      <Filter>Game\Game entities\Static</Filter>
+    <ClCompile Include="oDot.cpp">
+      <Filter>Game\OldPacman\Game entities\Static</Filter>
     </ClCompile>
     <ClCompile Include="StaticGameEntity.cpp">
-      <Filter>Game\Game entities\Static</Filter>
+      <Filter>Game\OldPacman\Game entities\Static</Filter>
     </ClCompile>
-    <ClCompile Include="Avatar.cpp">
-      <Filter>Game\Game entities\Movable</Filter>
+    <ClCompile Include="oAvatar.cpp">
+      <Filter>Game\OldPacman\Game entities\Movable</Filter>
     </ClCompile>
-    <ClCompile Include="Ghost.cpp">
-      <Filter>Game\Game entities\Movable</Filter>
+    <ClCompile Include="oGhost.cpp">
+      <Filter>Game\OldPacman\Game entities\Movable</Filter>
     </ClCompile>
     <ClCompile Include="MovableGameEntity.cpp">
-      <Filter>Game\Game entities\Movable</Filter>
+      <Filter>Game\OldPacman\Game entities\Movable</Filter>
     </ClCompile>
     <ClCompile Include="PathmapTile.cpp">
-      <Filter>Game\World</Filter>
+      <Filter>Game\OldPacman\World</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp">
-      <Filter>Game\World</Filter>
+      <Filter>Game\OldPacman\World</Filter>
     </ClCompile>
     <ClCompile Include="Vector2f.cpp">
       <Filter>Engine\Math</Filter>
@@ -127,40 +127,40 @@
     <ClCompile Include="PacmanLv1.cpp">
       <Filter>Game\Levels</Filter>
     </ClCompile>
+    <ClCompile Include="Pacman.cpp">
+      <Filter>Game\OldPacman</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Pacman.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="GameEntity.h">
-      <Filter>Game\Game entities</Filter>
+      <Filter>Game\OldPacman\Game entities</Filter>
     </ClInclude>
-    <ClInclude Include="BigDot.h">
-      <Filter>Game\Game entities\Static</Filter>
+    <ClInclude Include="oBigDot.h">
+      <Filter>Game\OldPacman\Game entities\Static</Filter>
     </ClInclude>
-    <ClInclude Include="Cherry.h">
-      <Filter>Game\Game entities\Static</Filter>
+    <ClInclude Include="oCherry.h">
+      <Filter>Game\OldPacman\Game entities\Static</Filter>
     </ClInclude>
-    <ClInclude Include="Dot.h">
-      <Filter>Game\Game entities\Static</Filter>
+    <ClInclude Include="oDot.h">
+      <Filter>Game\OldPacman\Game entities\Static</Filter>
     </ClInclude>
     <ClInclude Include="StaticGameEntity.h">
-      <Filter>Game\Game entities\Static</Filter>
+      <Filter>Game\OldPacman\Game entities\Static</Filter>
     </ClInclude>
-    <ClInclude Include="Avatar.h">
-      <Filter>Game\Game entities\Movable</Filter>
+    <ClInclude Include="oAvatar.h">
+      <Filter>Game\OldPacman\Game entities\Movable</Filter>
     </ClInclude>
-    <ClInclude Include="Ghost.h">
-      <Filter>Game\Game entities\Movable</Filter>
+    <ClInclude Include="oGhost.h">
+      <Filter>Game\OldPacman\Game entities\Movable</Filter>
     </ClInclude>
     <ClInclude Include="MovableGameEntity.h">
-      <Filter>Game\Game entities\Movable</Filter>
+      <Filter>Game\OldPacman\Game entities\Movable</Filter>
     </ClInclude>
     <ClInclude Include="PathmapTile.h">
-      <Filter>Game\World</Filter>
+      <Filter>Game\OldPacman\World</Filter>
     </ClInclude>
     <ClInclude Include="World.h">
-      <Filter>Game\World</Filter>
+      <Filter>Game\OldPacman\World</Filter>
     </ClInclude>
     <ClInclude Include="Vector2f.h">
       <Filter>Engine\Math</Filter>
@@ -233,6 +233,9 @@
     </ClInclude>
     <ClInclude Include="PacmanLv1.h">
       <Filter>Game\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Pacman.h">
+      <Filter>Game\OldPacman</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

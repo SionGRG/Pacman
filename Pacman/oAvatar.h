@@ -4,11 +4,11 @@
 #include "MovableGameEntity.h"
 #include "Vector2f.h"
 
-class Avatar : public MovableGameEntity
+class oAvatar : public MovableGameEntity
 {
 public:
-	Avatar(const Vector2f& aPosition);
-	~Avatar(void);
+	oAvatar(const Vector2f& aPosition);
+	~oAvatar(void);
 
 	void Update(float aTime);
 

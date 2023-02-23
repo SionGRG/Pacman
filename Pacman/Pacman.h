@@ -5,9 +5,9 @@
 
 struct SDL_Surface;
 class Drawer;
-class Avatar;
+class oAvatar;
 class World;
-class Ghost;
+class oGhost;
 
 class Pacman
 {
@@ -36,8 +36,8 @@ private:
 
 	Vector2f myNextMovement;
 
-	Avatar* myAvatar;
-	Ghost* myGhost;
+	oAvatar* myAvatar;
+	oGhost* myGhost;
 	World* myWorld;
 
 };

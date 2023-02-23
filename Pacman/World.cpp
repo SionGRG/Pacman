@@ -5,8 +5,8 @@
 #include <string>
 
 #include "PathmapTile.h"
-#include "Dot.h"
-#include "BigDot.h"
+#include "oDot.h"
+#include "oBigDot.h"
 #include "Drawer.h"
 
 World::World(void)
@@ -62,7 +62,7 @@ bool World::InitDots()
 			{
 				if (line[i] == '.')
 				{
-					Dot* dot = new Dot(Vector2f(i*22, lineIndex*22));
+					oDot* dot = new oDot(Vector2f(i*22, lineIndex*22));
 					myDots.push_back(dot);
 				}
 			}
@@ -89,7 +89,7 @@ bool World::InitBigDots()
 			{
 				if (line[i] == 'o')
 				{
-					BigDot* dot = new BigDot(Vector2f(i*22, lineIndex*22));
+					oBigDot* dot = new oBigDot(Vector2f(i*22, lineIndex*22));
 					myBigDots.push_back(dot);
 				}
 			}
@@ -106,15 +106,15 @@ void World::Draw(Drawer* aDrawer)
 {
 	aDrawer->Draw("playfield.png");
 
-	for(std::list<Dot*>::iterator list_iter = myDots.begin(); list_iter != myDots.end(); list_iter++)
+	for(std::list<oDot*>::iterator list_iter = myDots.begin(); list_iter != myDots.end(); list_iter++)
 	{
-		Dot* dot = *list_iter;
+		oDot* dot = *list_iter;
 		dot->Draw(aDrawer);
 	}
 
-	for(std::list<BigDot*>::iterator list_iter = myBigDots.begin(); list_iter != myBigDots.end(); list_iter++)
+	for(std::list<oBigDot*>::iterator list_iter = myBigDots.begin(); list_iter != myBigDots.end(); list_iter++)
 	{
-		BigDot* dot = *list_iter;
+		oBigDot* dot = *list_iter;
 		dot->Draw(aDrawer);
 	}
 }
@@ -134,9 +134,9 @@ bool World::TileIsValid(int anX, int anY)
 
 bool World::HasIntersectedDot(const Vector2f& aPosition)
 {
-	for(std::list<Dot*>::iterator list_iter = myDots.begin(); list_iter != myDots.end(); list_iter++)
+	for(std::list<oDot*>::iterator list_iter = myDots.begin(); list_iter != myDots.end(); list_iter++)
 	{
-		Dot* dot = *list_iter;
+		oDot* dot = *list_iter;
 		if ((dot->GetPosition() - aPosition).Length() < 5.f)
 		{
 			myDots.remove(dot);
@@ -150,9 +150,9 @@ bool World::HasIntersectedDot(const Vector2f& aPosition)
 
 bool World::HasIntersectedBigDot(const Vector2f& aPosition)
 {
-	for(std::list<BigDot*>::iterator list_iter = myBigDots.begin(); list_iter != myBigDots.end(); list_iter++)
+	for(std::list<oBigDot*>::iterator list_iter = myBigDots.begin(); list_iter != myBigDots.end(); list_iter++)
 	{
-		BigDot* dot = *list_iter;
+		oBigDot* dot = *list_iter;
 		if ((dot->GetPosition() - aPosition).Length() < 5.f)
 		{
 			myBigDots.remove(dot);

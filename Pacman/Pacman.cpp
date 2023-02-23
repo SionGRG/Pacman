@@ -6,9 +6,9 @@
 #include <fstream>
 #include <string>
 
-#include "Avatar.h"
+#include "oAvatar.h"
 #include "World.h"
-#include "Ghost.h"
+#include "oGhost.h"
 
 Pacman* Pacman::Create(Drawer* aDrawer)
 {
@@ -32,8 +32,8 @@ Pacman::Pacman(Drawer* aDrawer)
 , myLives(3)
 , myGhostGhostCounter(0.f)
 {
-	myAvatar = new Avatar(Vector2f(13*22,22*22));
-	myGhost = new Ghost(Vector2f(13*22,13*22));
+	myAvatar = new oAvatar(Vector2f(13*22,22*22));
+	myGhost = new oGhost(Vector2f(13*22,13*22));
 	myWorld = new World();
 }
 
