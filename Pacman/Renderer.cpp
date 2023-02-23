@@ -72,7 +72,7 @@ int Renderer::Render(GameObjectMap* gameObjects)
 			{
 				if (itSpr->second->m_Active) // only render active sprites
 				{
-					SDL_RenderCopy(m_Renderer, itSpr->second->GetTexture(), &itSpr->second->GetTextureRect()->GetSDLRect(), &itSpr->second->GetSpritePosRect()->GetSDLRect());
+					SDL_RenderCopy(m_Renderer, itSpr->second->GetTexture(), &itSpr->second->GetTextureRect()->GetSDLRect(), &itObj->second->GetPosRect()->GetSDLRect());
 				}
 			}
 		}

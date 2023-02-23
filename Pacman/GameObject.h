@@ -14,33 +14,38 @@ class GameObject
 {
 public:
 	GameObject() {}
-	GameObject(Sprite* spr, bool activate);
+	GameObject(Sprite* spr, v2& pos, bool activate);
 	virtual ~GameObject();
 
-	int Init(Sprite* spr);
-	int Update(float& elapsedTime);
-	int Terminate();
+	virtual int Init(Sprite* spr);
+	virtual int UpdateControls() { return retCode; }
+	virtual int Update(float& elapsedTime);
+	virtual int Terminate();
 
 	// Sprite Functions
 	SpriteMap* GetSprites() { return &m_Sprites; }
 	int AddSprite(Sprite* spr, bool activate);
 	int RemoveSprite(Sprite* spr);
 	Sprite* GetSprite(std::string_view sprName);
-	
+
 	// Movement
+	RECTF* GetPosRect() { return &m_PosRect; }
 	v2* GetPositionVelocity() { return &m_PosVel; }
 	void SetPositionVelocity(v2& vel) { m_PosVel = vel; }
 	void UpdatePositionVelocity(v2& vel) { m_PosVel += vel; }
 	void UpdateDirection(v2& vel) { m_PosVel *= vel; }
 
 	bool m_Active = false ;	// by default its asleep and should not render or update
-private:
+
+protected:
 	std::string m_Name;
-
 	SpriteMap m_Sprites;
+	RECTF m_PosRect;
 
+	v2 m_Pos;
 	v2 m_PosVel;
 
+private:
 	bool m_Terminated = false;
 };
 

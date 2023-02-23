@@ -4,10 +4,10 @@
 #include "SDL.h"
 #include "GameObject.h"
 
-Sprite::Sprite(SpriteData* sprData, SDL_Texture* sprTex, int xPos, int yPos)
-	:m_SprData(sprData), m_Texture(sprTex)
+Sprite::Sprite(SpriteData* sprData, SDL_Texture* sprTex, v2& pos)
+	:m_SprData(sprData), m_Texture(sprTex), m_Pos(pos)
 {
-	Init(xPos, yPos);
+	Init();
 }
 
 Sprite::~Sprite()
@@ -15,10 +15,9 @@ Sprite::~Sprite()
 	Terminate();
 }
 
-int Sprite::Init(int& xPos, int& yPos)
+int Sprite::Init()
 {
-	/* initialise the position rect */
-	m_PosRect = RECTF(xPos, yPos, m_SprData->Size.myX, m_SprData->Size.myY);
+
 
 	/* Define the texture rectangle of the sprite */
 	if (m_SprData != nullptr)
@@ -42,11 +41,6 @@ int Sprite::Update(float& elapsedTime, GameObject* parent)
 	{
 		if (m_SprData != nullptr && m_SprData->Gridded)
 			m_Animation->Update(elapsedTime);
-
-		// Update movement
-		v2* pos = parent->GetPositionVelocity();
-		m_PosRect.x += pos->myX;
-		m_PosRect.y += pos->myY;
 
 	}
 

@@ -130,6 +130,9 @@
     <ClCompile Include="Pacman.cpp">
       <Filter>Game\OldPacman</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Game\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h">
@@ -236,6 +239,9 @@
     </ClInclude>
     <ClInclude Include="Pacman.h">
       <Filter>Game\OldPacman</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Game\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -31,7 +31,7 @@ int ResourceCache::Terminate()
 
 	// Clear texture memory
 	for (TextureMap::iterator itTex = m_Textures.begin(); itTex != m_Textures.end(); ++itTex)
-		free(itTex->second);
+		delete itTex->second;
 
 	m_Textures.clear();
 
@@ -56,7 +56,7 @@ int ResourceCache::RemoveTexture(std::string_view texName)
 	// Remove the texture from the texture container
 	TextureMap::iterator it;
 	it = m_Textures.find(texName.data());
-	free(it->second);	// clear texture memory
+	delete it->second;	// clear texture memory
 	m_Textures.erase(it);
 
 	return retCode;

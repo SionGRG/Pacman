@@ -68,7 +68,7 @@ int Animation::Update(float& elapsedTime)
 
 int Animation::Terminate()
 {
-	free(m_Sprite);
+	delete m_Sprite;
 	m_AnimFrames.clear();
 
 	m_Terminated = true;

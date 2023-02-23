@@ -138,6 +138,7 @@
     <ClCompile Include="Pacman.cpp" />
     <ClCompile Include="PacmanLv1.cpp" />
     <ClCompile Include="PathmapTile.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StaticGameEntity.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="Pacman.h" />
     <ClInclude Include="PacmanLv1.h" />
     <ClInclude Include="PathmapTile.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StaticGameEntity.h" />

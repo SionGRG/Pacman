@@ -25,7 +25,7 @@ int Level::Update(float& elapsedTime)
 
 int Level::Terminate()
 {
-	free(m_Cache);
+	delete m_Cache;
 
 	// Terminate the game objects
 	for (auto itObj = m_GameObjects.begin(); itObj != m_GameObjects.end(); ++itObj)

@@ -172,6 +172,9 @@ Day 11: 23rd February 2023
 		- Details: Added movement to the GameObject class. A gameobject can now move together with all it's sprites
 		- ETA: 40 min
 		
+	* Task 18: Implemented a Player class derived from the GameObject class
+		- Details: create a Player class that is derived from the gameobject class. Implemented movement for Game Objects and their sprites move together with them. The player can control the Pacman using the arrow keys to move around the level.
+		- ETA: 2 hrs 30 min
 
 
 	* Task X: 
