@@ -21,19 +21,25 @@ public:
 	int Update(float& elapsedTime);
 	int Terminate();
 
-	SpriteMap* GetSprites() { return &m_Sprites; }
-
 	// Sprite Functions
+	SpriteMap* GetSprites() { return &m_Sprites; }
 	int AddSprite(Sprite* spr, bool activate);
 	int RemoveSprite(Sprite* spr);
 	Sprite* GetSprite(std::string_view sprName);
 	
+	// Movement
+	v2* GetPositionVelocity() { return &m_PosVel; }
+	void SetPositionVelocity(v2& vel) { m_PosVel = vel; }
+	void UpdatePositionVelocity(v2& vel) { m_PosVel += vel; }
+	void UpdateDirection(v2& vel) { m_PosVel *= vel; }
 
 	bool m_Active = false ;	// by default its asleep and should not render or update
 private:
 	std::string m_Name;
 
 	SpriteMap m_Sprites;
+
+	v2 m_PosVel;
 
 	bool m_Terminated = false;
 };

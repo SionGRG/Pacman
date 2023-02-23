@@ -6,7 +6,7 @@
 #include "PacmanLv1.h"
 
 
-#define INITIAL_PACMAN
+//#define INITIAL_PACMAN
 
 
 Game::Game()

@@ -49,6 +49,14 @@ Vector2f& Vector2f::operator-=(const Vector2f& other)
 	return *this;
 }
 
+Vector2f& Vector2f::operator*=(const Vector2f& other)
+{
+	myX *= other.myX;
+	myY *= other.myY;
+
+	return *this;
+}
+
 Vector2f& Vector2f::operator*=(const float aFloat)
 {
 	myX *= aFloat;

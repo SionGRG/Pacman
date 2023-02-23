@@ -2,6 +2,7 @@
 #include "ResourceCache.h"
 #include "Animation.h"
 #include "SDL.h"
+#include "GameObject.h"
 
 Sprite::Sprite(SpriteData* sprData, SDL_Texture* sprTex, int xPos, int yPos)
 	:m_SprData(sprData), m_Texture(sprTex)
@@ -35,12 +36,18 @@ int Sprite::Init(int& xPos, int& yPos)
 	return retCode;
 }
 
-int Sprite::Update(float& elapsedTime)
+int Sprite::Update(float& elapsedTime, GameObject* parent)
 {
 	if (m_Active)	// Only update active sprites
 	{
 		if (m_SprData != nullptr && m_SprData->Gridded)
 			m_Animation->Update(elapsedTime);
+
+		// Update movement
+		v2* pos = parent->GetPositionVelocity();
+		m_PosRect.x += pos->myX;
+		m_PosRect.y += pos->myY;
+
 	}
 
 	return retCode;

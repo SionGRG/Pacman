@@ -19,7 +19,7 @@ public:
 	~Sprite();
 	
 	int Init(int& xPos, int& yPos);
-	int Update(float& elapsedTime);
+	int Update(float& elapsedTime, GameObject* parent);
 	int Terminate();
 
 	SDL_Texture* GetTexture() { return m_Texture; }

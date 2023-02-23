@@ -168,8 +168,13 @@ Day 11: 23rd February 2023
 		- Details: Separating the old Pacman project with the new version, the old one has an "o" prefix on some of its files and classes.
 		- ETA: 25 min
 		
+	* Task 17: GameObject Movement
+		- Details: Added movement to the GameObject class. A gameobject can now move together with all it's sprites
+		- ETA: 40 min
+		
 
 
 	* Task X: 
 		- Details: 
 		- ETA: -- hrs -- min
+

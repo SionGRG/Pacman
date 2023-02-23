@@ -5,6 +5,7 @@
 GameObject::GameObject(Sprite* spr, bool activate = false)
 	:m_Active(activate)
 {
+	m_PosVel = v2(0, 0);
 	Init(spr);
 }
 
@@ -21,6 +22,7 @@ int GameObject::Init(Sprite* spr)
 	// Activate and add the first sprite to the sprite container
 	AddSprite(spr, true);
 
+
 	return retCode;
 }
 
@@ -29,11 +31,17 @@ int GameObject::Update(float& elapsedTime)
 	// Only update the Gameobjects that are active
 	if (m_Active)
 	{
+		const Uint8* keystate = SDL_GetKeyboardState(NULL);
+
+		SetPositionVelocity(v2(0.2f,0));
+		if (keystate[SDL_SCANCODE_UP])
+			UpdateDirection(v2(-1.f, 1.f));
+		
 		// update the Gameobject's sprites
 		for (auto itSpr = m_Sprites.begin(); itSpr != m_Sprites.end(); ++itSpr)
 		{
 			if (itSpr->second->m_Active) // only the active ones
-				itSpr->second->Update(elapsedTime);
+				itSpr->second->Update(elapsedTime, this);
 		}
 	}
 
