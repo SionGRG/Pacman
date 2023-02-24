@@ -22,12 +22,6 @@ int GameObject::Init(Sprite* spr)
 	// Activate and add the first sprite to the sprite container
 	AddSprite(spr, true);
 
-	// Relate the position of the sprite to it's parent gameobject
-	m_Pos += spr->GetPos();
-
-	/* initialise the position rect */
-	m_PosRect = RECTF(m_Pos.myX, m_Pos.myY, spr->GetSpriteData()->Size.myX, spr->GetSpriteData()->Size.myY);
-
 	return retCode;
 }
 
@@ -45,14 +39,16 @@ int GameObject::Update(float& elapsedTime)
 			if (itSpr->second->m_Active) // only the active ones
 			{
 				itSpr->second->Update(elapsedTime, this);
-				// Update relative movement
-				m_Pos += itSpr->second->GetPos();
 			}
+			
+			// Update the position of the sprites, even if they are not active
+			itSpr->second->GetPosRect()->x += m_PosVel.myX;
+			itSpr->second->GetPosRect()->y += m_PosVel.myY;
 		}
 
 		// Update gameobject's movement
-		m_PosRect.x += m_PosVel.myX;
-		m_PosRect.y += m_PosVel.myY;
+		//m_Pos.myX += m_PosVel.myX;
+		//m_Pos.myY += m_PosVel.myY;
 	}
 
 	return retCode;
@@ -78,6 +74,11 @@ int GameObject::AddSprite(Sprite* spr, bool activate)
 {
 	// Add the sprite to the sprite container
 	spr->m_Active = activate;
+
+	// Relate the position of the sprite to it's parent gameobject
+	spr->GetPosRect()->x += m_Pos.myX;
+	spr->GetPosRect()->y += m_Pos.myY;
+
 	m_Sprites.emplace(spr->GetSpriteName(), spr);
 
 	return retCode;

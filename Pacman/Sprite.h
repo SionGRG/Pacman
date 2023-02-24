@@ -29,6 +29,7 @@ public:
 	int DefineTextureRect(RECTF* texDim);
 	int DefineTextureRect(int& frameIndex);
 
+	RECTF* GetPosRect() { return &m_PosRect; }
 	v2& GetPos() { return m_Pos; }
 
 	bool m_Active = false;	// by default its asleep and should not render or update
@@ -38,7 +39,10 @@ private:
 	SpriteData* m_SprData;			// Data about the sprite from the json file
 	Animation* m_Animation;			// Sprite animation
 	RECTF m_TexRect;
+	
 	v2 m_Pos;
+	v2 m_Scale;
+	RECTF m_PosRect;
 
 	bool m_Terminated = false;
 };

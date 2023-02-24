@@ -177,6 +177,15 @@ Day 11: 23rd February 2023
 		- ETA: 2 hrs 30 min
 
 
+Day 11: 24th February 2023
+		
+	-> Brief: Refining Gameplay Part 2
+
+	* Task 19: Added more GameObject Derived classes
+		- Details: Added the Ghost class Derived from the GameObject class. Added the Dot class Derived from the GameObject class. Added the BigDot class Derived from the GameObject class. Fixed the sprites' positions and movement relative to their parent GameObject.
+		- ETA: 2 hrs 45 min
+
+
 	* Task X: 
 		- Details: 
 		- ETA: -- hrs -- min

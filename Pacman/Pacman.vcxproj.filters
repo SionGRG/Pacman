@@ -133,6 +133,15 @@
     <ClCompile Include="Player.cpp">
       <Filter>Game\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="Ghost.cpp">
+      <Filter>Game\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="BigDot.cpp">
+      <Filter>Game\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Dot.cpp">
+      <Filter>Game\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h">
@@ -179,9 +188,6 @@
     </ClInclude>
     <ClInclude Include="ResourceCache.h">
       <Filter>Engine\System</Filter>
-    </ClInclude>
-    <ClInclude Include="DataStructures.h">
-      <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>Engine\System</Filter>
@@ -243,6 +249,19 @@
     <ClInclude Include="Player.h">
       <Filter>Game\GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Ghost.h">
+      <Filter>Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="BigDot.h">
+      <Filter>Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot.h">
+      <Filter>Game\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Documentation\Timeline Documentation.txt" />
@@ -254,5 +273,8 @@
     <None Include="..\data\PacmanAtlasData.json">
       <Filter>Game\Data</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Pacman.rc" />
   </ItemGroup>
 </Project>

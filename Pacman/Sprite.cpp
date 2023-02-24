@@ -17,7 +17,8 @@ Sprite::~Sprite()
 
 int Sprite::Init()
 {
-
+	// Set the scale of the sprite
+	m_Scale = v2(1,1);
 
 	/* Define the texture rectangle of the sprite */
 	if (m_SprData != nullptr)
@@ -30,6 +31,8 @@ int Sprite::Init()
 		{
 			DefineTextureRect(&m_SprData->TexRect);
 		}
+		/* initialise the position rect */
+		m_PosRect = RECTF(m_Pos.myX, m_Pos.myY, m_SprData->Size.myX * m_Scale.myX, m_SprData->Size.myY * m_Scale.myY);
 	}
 
 	return retCode;
@@ -41,7 +44,6 @@ int Sprite::Update(float& elapsedTime, GameObject* parent)
 	{
 		if (m_SprData != nullptr && m_SprData->Gridded)
 			m_Animation->Update(elapsedTime);
-
 	}
 
 	return retCode;

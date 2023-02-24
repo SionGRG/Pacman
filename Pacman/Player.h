@@ -5,7 +5,7 @@
 #include "GameObject.h"
 
 
-class ResourceCache;
+class ResourceCache;		
 
 class Player : public GameObject
 {
