@@ -15,7 +15,7 @@ public:
 	int Terminate() override;
 
 private:
-
+	MapTileVector m_MapTiles;
 
 	bool m_Terminated = false;
 };

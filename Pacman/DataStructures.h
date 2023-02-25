@@ -4,6 +4,7 @@
 
 #include <string>
 #include <unordered_map>
+#include <map>
 #include "Vector2f.h"
 #include "SDL.h"
 
@@ -59,7 +60,8 @@ class Sprite;
 typedef std::unordered_map<std::string, Sprite*> SpriteMap;
 
 class GameObject;
-typedef std::unordered_map<std::string, GameObject*> GameObjectMap;
+//typedef std::unordered_map<std::string, GameObject*> GameObjectMap;
+typedef std::map<std::string, GameObject*> GameObjectMap;
 
 typedef Vector2f v2;
 // Json Data format loaded from TexturePacker packed files
@@ -76,6 +78,21 @@ struct SpriteData
 	v2					Grid;		// v2 (columns, rows)
 };
 typedef std::unordered_map<std::string, SpriteData> SpriteAtlasMap;
+
+struct MapTile
+{
+	MapTile(int x, int y, bool isBlocking)
+		: m_X(x), m_Y(y), m_IsBlockingFlag(isBlocking), m_IsVisitedFlag(false)
+	{}
+	~MapTile() {}
+
+	int m_X;
+	int m_Y;
+	bool m_IsBlockingFlag;
+	bool m_IsVisitedFlag;
+};
+typedef std::vector<MapTile*> MapTileVector;
+
 
 
 #endif // !__DATASTRUCTURES_H__

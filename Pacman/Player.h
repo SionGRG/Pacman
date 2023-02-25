@@ -17,6 +17,9 @@ public:
 	int UpdateControls() override;
 	int Terminate() override;
 
+	void IncreaseScore() { m_Score++; }
+	int GetScore() { return m_Score; }
+
 protected:
 	int EnableSprite(std::string_view sprName);
 

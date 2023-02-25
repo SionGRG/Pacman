@@ -185,6 +185,15 @@ Day 11: 24th February 2023
 		- Details: Added the Ghost class Derived from the GameObject class. Added the Dot class Derived from the GameObject class. Added the BigDot class Derived from the GameObject class. Fixed the sprites' positions and movement relative to their parent GameObject.
 		- ETA: 2 hrs 45 min
 
+		
+Day 12: 25th February 2023
+
+	-> Brief: Refining Gameplay Part 3
+
+	* Task 20: Used the map.txt data to add Game objects to the level
+		- Details: Created the map of the level using the data from the map.txt file. Added the dots using data from the map.txt file. Added the Big dots using data from the map.txt file. Changed GameObjectMap to a map instead of an unordered map to allow for prioritisation of rendering game objects according to their position in the map, since SDL does not allow setting whether you can draw a texture in front of another.
+		- ETA: 2 hrs 45 min
+		
 
 	* Task X: 
 		- Details: 
