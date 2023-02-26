@@ -3,16 +3,18 @@
 #include "Animation.h"
 #include "SDL.h"
 #include "GameObject.h"
+#include "Collider.h"
 
-Sprite::Sprite(SpriteData* sprData, SDL_Texture* sprTex, v2& pos)
-	:m_SprData(sprData), m_Texture(sprTex), m_Pos(pos)
+Sprite::Sprite(SpriteData* sprData, SDL_Texture* sprTex, v2& pos, bool EnableCollision)
+	: m_SprData(sprData), m_Texture(sprTex), m_Pos(pos), m_CollisionStatus(EnableCollision)
 {
 	Init();
 }
 
 Sprite::~Sprite()
 {
-	Terminate();
+	if (!m_Terminated)
+		Terminate();
 }
 
 int Sprite::Init()
@@ -33,6 +35,10 @@ int Sprite::Init()
 		}
 		/* initialise the position rect */
 		m_PosRect = RECTF(m_Pos.myX, m_Pos.myY, m_SprData->Size.myX * m_Scale.myX, m_SprData->Size.myY * m_Scale.myY);
+
+		// Initialise the collision box
+		if (m_CollisionStatus)
+			m_CollisionBox = new Collider2D(m_SprData->Name, m_CollisionStatus, v2(m_PosRect.w, m_PosRect.h), v2(m_PosRect.x, m_PosRect.y), v2(0, 0));
 	}
 
 	return retCode;
@@ -44,6 +50,11 @@ int Sprite::Update(float& elapsedTime, GameObject* parent)
 	{
 		if (m_SprData != nullptr && m_SprData->Gridded)
 			m_Animation->Update(elapsedTime);
+
+		// Update the collision box
+		if (m_CollisionStatus)
+			m_CollisionBox->Update(parent, this);
+		
 	}
 
 	return retCode;
@@ -51,13 +62,20 @@ int Sprite::Update(float& elapsedTime, GameObject* parent)
 
 int Sprite::Terminate()
 {
-	if (!m_Terminated)
-	{
-		m_Texture = nullptr;
-		delete m_Texture;
+	m_Texture = nullptr;
+	delete m_Texture;
 
-		m_Terminated = true;
-	}
+	m_SprData = nullptr;
+	delete m_SprData;
+
+	m_Animation = nullptr;
+	delete m_Animation;
+	
+	m_CollisionBox = nullptr;
+	delete m_CollisionBox;
+
+	m_Terminated = true;
+	
 	return retCode;
 }
 
@@ -88,4 +106,10 @@ int Sprite::DefineTextureRect(int& frameIndex)
 	DefineTextureRect(&frames->at(frameIndex));
 
 	return retCode;
+}
+
+
+RECTB* Sprite::GetCollisionBox()
+{
+	return m_CollisionBox->GetCollisionBox();
 }

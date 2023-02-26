@@ -205,6 +205,10 @@ Day 13: 26th February 2023
 		- Details: Added Pacman collisions with the Dots and BigDots. Refined Pacman's movement animations. 
 		- ETA: 2 hrs 45 min
 
+	* Task 22: Added Collision detection for Rects and Points
+		- Details: Added collision detection between a point and a rect. Added collision detection between a rect and a rect. Added a definition of the Collision box RECT to the data structures. Moved some functionality from the Player class to it's Base GameObject Class. Added foundation movement to the Ghost class(not working at the moment).
+		- ETA: 5 hrs 00 min
+		
 		
 	* Task X: 
 		- Details: 

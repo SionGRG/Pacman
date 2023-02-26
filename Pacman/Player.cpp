@@ -1,11 +1,12 @@
+#include <algorithm>
 #include "Player.h"
 #include "Sprite.h"
 #include "Animation.h"
+#include "PacmanLv1.h"
 #include "ResourceCache.h"
-#include "Level.h"
-#include <algorithm>
+#include "Collider.h"
 
-Player::Player(Sprite* spr, v2& pos, bool activate, ResourceCache* cache, Level* level)
+Player::Player(Sprite* spr, v2& pos, bool activate, ResourceCache* cache, PacmanLv1* level)
 	:m_Cache(cache), m_Level(level)
 {
 	m_Active = activate;
@@ -27,44 +28,45 @@ int Player::Init(Sprite* spr)
 	GameObject::Init(spr);
 
 	// Add the other sprites to the sprite container
-	AddSprite(new Sprite(m_Cache->GetSpriteData("Pacman_right_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0)), false);
-	AddSprite(new Sprite(m_Cache->GetSpriteData("Pacman_up_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0)), false);
-	AddSprite(new Sprite(m_Cache->GetSpriteData("Pacman_down_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0)), false);
+	AddSprite(new Sprite(m_Cache->GetSpriteData("Pacman_right_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0), true), false);
+	AddSprite(new Sprite(m_Cache->GetSpriteData("Pacman_up_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0), true), false);
+	AddSprite(new Sprite(m_Cache->GetSpriteData("Pacman_down_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0), true), false);
 
 	// Set the player data
 	m_MoveSpeed = 0.7f;
+	m_Blocked = 1.f;
 	m_Lives = 3;
 	m_Score = 0;
 
 	return retCode;
 }
 
-int Player::UpdateControls()
+int Player::UpdateControls(float& elapsedTime)
 {
 	const Uint8* keystate = SDL_GetKeyboardState(NULL);
 
 	if (keystate[SDL_SCANCODE_LEFT])
 	{
 		SetPositionVelocity(v2(m_MoveSpeed, 0));
-		UpdateDirection(v2(-1.f, 1.f));
+		UpdateDirection(v2(-1.f * m_Blocked, 1.f));
 		EnableSprite("Pacman_left_32");
 	}
 	else if (keystate[SDL_SCANCODE_RIGHT])
 	{
 		SetPositionVelocity(v2(m_MoveSpeed, 0));
-		UpdateDirection(v2(1.f, 1.f));
+		UpdateDirection(v2(1.f * m_Blocked, 1.f));
 		EnableSprite("Pacman_right_32");
 	}
 	else if (keystate[SDL_SCANCODE_UP])
 	{
 		SetPositionVelocity(v2(0, m_MoveSpeed));
-		UpdateDirection(v2(1.f, -1.f));
+		UpdateDirection(v2(1.f, -1.f * m_Blocked));
 		EnableSprite("Pacman_up_32");
 	}
 	else if (keystate[SDL_SCANCODE_DOWN])
 	{
 		SetPositionVelocity(v2(0, m_MoveSpeed));
-		UpdateDirection(v2(1.f, 1.f));
+		UpdateDirection(v2(1.f, 1.f * m_Blocked));
 		EnableSprite("Pacman_down_32");
 	}
 	else
@@ -100,25 +102,21 @@ int Player::UpdateCollision(float& elapsedTime)
 				}
 			}
 		});
-	/*
-	
-	for (GameObjectMap::iterator itObj = m_Level->GetGameObjects()->begin(); itObj != m_Level->GetGameObjects()->end(); ++itObj)
-	{
-		if (itObj->second->m_Active)
+
+
+	std::for_each(m_Level->GetMapTiles()->begin(), m_Level->GetMapTiles()->end(), [this](MapTile* tile)
 		{
-			if (itObj->second->GetType() == "Dot")
+			if (tile->m_IsBlockingFlag)
 			{
-				if (HasCollided(itObj->second->GetPosition()))
+				for (SpriteMap::iterator itSpr = m_Sprites.begin(); itSpr != m_Sprites.end(); ++itSpr)
 				{
-					IncreaseScore();
-					itObj->second->m_Active = false;
+					if (!itSpr->second->GetBoxCollider()->PointCollision(v2(tile->m_X, tile->m_Y)))
+						m_Blocked = 1.f;
+					else 
+						m_Blocked = -1.f;
 				}
 			}
-		}
-	}
-	*/
-
-
+		});
 
 	return retCode;
 }
@@ -129,28 +127,6 @@ int Player::Terminate()
 
 	m_Terminated = true;
 
-	return retCode;
-}
-
-int Player::EnableSprite(std::string_view sprName)
-{
-	// Disable all the sprite and enable the specified one
-	for (SpriteMap::iterator itSpr = m_Sprites.begin(); itSpr != m_Sprites.end(); ++itSpr)
-	{
-		itSpr->second->m_Active = false;
-	}
-	m_Sprites.at(sprName.data())->m_Active = true;
-	m_Sprites.at(sprName.data())->GetAnim()->PlayAnimation();
-
-	return retCode;
-}
-
-int Player::StopAnimations()
-{
-	// Disable all the sprite and enable the specified one
-	for (SpriteMap::iterator itSpr = m_Sprites.begin(); itSpr != m_Sprites.end(); ++itSpr)
-		itSpr->second->GetAnim()->StopAnimation();
-	
 	return retCode;
 }
 

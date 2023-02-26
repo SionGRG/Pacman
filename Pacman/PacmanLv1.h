@@ -16,17 +16,17 @@ public:
 
 	bool TileIsValid(int& x, int& y);
 
-	bool HasIntersectedDot(const v2& position);
-	bool HasIntersectedBigDot(const v2& position);
-	bool HasIntersectedCherry(const v2& position);
-	void GetPath(int& sourceX, int& sourceY, int& destX, int& destY, MapTileVector& tiles);
+	void GetPath(int sourceX, int sourceY, int destX, int destY, MapTileList& tiles);
+
+	MapTileList* GetMapTiles() { return &m_MapTiles; }
 
 private:
-	MapTile* GetTile(int& aFromX, int& aFromY);
-	bool Pathfind(MapTile* sourceTile, MapTile* destTile, MapTileVector& tiles);
-	bool ListDoesNotContain(MapTile* sourceTile, MapTileVector& tiles);
-	
-	MapTileVector m_MapTiles;
+	MapTile* GetTile(int sourceX, int sourceY);
+	//bool SortFromGhostSpawn(MapTile* a, MapTile* b);
+	bool Pathfind(MapTile* sourceTile, MapTile* destTile, MapTileList& tiles);
+	bool ListDoesNotContain(MapTile* sourceTile, MapTileList& tiles);
+
+	MapTileList m_MapTiles;
 
 	bool m_Terminated = false;
 };

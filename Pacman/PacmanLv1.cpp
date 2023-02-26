@@ -68,7 +68,7 @@ int PacmanLv1::Init()
 				// add the player's gameobject
 				if (mapData[i] == 'p')
 				{
-					AddGameObject("Packman", new Player(new Sprite(m_Cache->GetSpriteData("Pacman_left_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0)), v2((i * 22) + mapStartPosX, (lineIndex * 22) + mapStartPosY), true, m_Cache, this));
+					AddGameObject("Packman", new Player(new Sprite(m_Cache->GetSpriteData("Pacman_left_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0), true), v2((i * 22) + mapStartPosX, (lineIndex * 22) + mapStartPosY), true, m_Cache, this));
 				}
 			}
 			++lineIndex;
@@ -76,7 +76,7 @@ int PacmanLv1::Init()
 	}
 
 	// add test game objects
-	AddGameObject("RedGhost", new Ghost(new Sprite(m_Cache->GetSpriteData("ghost_red_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0)), v2(498, 350), true, m_Cache));
+	AddGameObject("RedGhost", new Ghost(new Sprite(m_Cache->GetSpriteData("ghost_red_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0)), v2(498, 350), true, m_Cache, this));
 
 
 	return retCode;
@@ -105,45 +105,98 @@ bool PacmanLv1::TileIsValid(int& x, int& y)
 	return valid;
 }
 
-bool PacmanLv1::HasIntersectedDot(const v2& position)
+void PacmanLv1::GetPath(int sourceX, int sourceY, int destX, int destY, MapTileList& tiles)
 {
-	bool intersected = false;
-	std::for_each(m_GameObjects.begin(), m_GameObjects.end(), [&intersected, &position](std::pair<const std::string, GameObject*> objPair)
+	MapTile* sourceTile = GetTile(sourceX, sourceY);
+	MapTile* destTile = GetTile(destX, destY);
+
+	for (MapTileList::iterator itTiles = m_MapTiles.begin(); itTiles != m_MapTiles.end(); itTiles++)
+	{
+		MapTile* tile = *itTiles;
+		tile->m_IsVisitedFlag = false;
+	}
+
+	Pathfind(sourceTile, destTile, tiles);
+}
+
+MapTile* PacmanLv1::GetTile(int sourceX, int sourceY)
+{
+	for (MapTileList::iterator itTile = m_MapTiles.begin(); itTile != m_MapTiles.end(); ++itTile)
+	{
+		MapTile* tile = *itTile;
+		if (tile->m_X == sourceX && tile->m_Y == sourceY)
 		{
-			if ((objPair.second->GetPosition() - position).Length() < 5.f)
-			{
-				intersected = true;
-			}
-		});
+			return tile;
+		}
+	}
 
-	return intersected;
-}
-
-bool PacmanLv1::HasIntersectedBigDot(const v2& position)
-{
-	return false;
-}
-
-bool PacmanLv1::HasIntersectedCherry(const v2& position)
-{
-	return false;
-}
-
-void PacmanLv1::GetPath(int& sourceX, int& sourceY, int& destX, int& destY, MapTileVector& tiles)
-{
-}
-
-MapTile* PacmanLv1::GetTile(int& aFromX, int& aFromY)
-{
 	return nullptr;
 }
 
-bool PacmanLv1::Pathfind(MapTile* sourceTile, MapTile* destTile, MapTileVector& tiles)
+bool SortFromGhostSpawn(MapTile* a, MapTile* b)
 {
+	int la = abs(a->m_X - 13) + abs(a->m_Y - 13);
+	int lb = abs(b->m_X - 13) + abs(b->m_Y - 13);
+
+	return la < lb;
+}
+
+bool PacmanLv1::Pathfind(MapTile* sourceTile, MapTile* destTile, MapTileList& tiles)
+{
+	sourceTile->m_IsVisitedFlag = true;
+
+	if (sourceTile->m_IsBlockingFlag)
+		return false;
+
+	if (sourceTile == destTile)
+		return true;
+
+	MapTileList neighborList;
+
+	MapTile* up = GetTile(sourceTile->m_X, sourceTile->m_Y - 1);
+	if (up && !up->m_IsVisitedFlag && !up->m_IsBlockingFlag && ListDoesNotContain(up, tiles))
+		neighborList.push_front(up);
+
+	MapTile* down = GetTile(sourceTile->m_X, sourceTile->m_Y + 1);
+	if (down && !down->m_IsVisitedFlag && !down->m_IsBlockingFlag && ListDoesNotContain(down, tiles))
+		neighborList.push_front(down);
+
+	MapTile* right = GetTile(sourceTile->m_X + 1, sourceTile->m_Y);
+	if (right && !right->m_IsVisitedFlag && !right->m_IsBlockingFlag && ListDoesNotContain(right, tiles))
+		neighborList.push_front(right);
+
+	MapTile* left = GetTile(sourceTile->m_X - 1, sourceTile->m_Y);
+	if (left && !left->m_IsVisitedFlag && !left->m_IsBlockingFlag && ListDoesNotContain(left, tiles))
+		neighborList.push_front(left);
+
+	neighborList.sort(SortFromGhostSpawn);
+
+	for (MapTileList::iterator list_iter = neighborList.begin(); list_iter != neighborList.end(); list_iter++)
+	{
+		MapTile* tile = *list_iter;
+
+		tiles.push_back(tile);
+
+		if (Pathfind(tile, destTile, tiles))
+			return true;
+
+		tiles.pop_back();
+	}
+
 	return false;
 }
 
-bool PacmanLv1::ListDoesNotContain(MapTile* sourceTile, MapTileVector& tiles)
+bool PacmanLv1::ListDoesNotContain(MapTile* sourceTile, MapTileList& tiles)
 {
+	for (MapTileList::iterator itTile = tiles.begin(); itTile != tiles.end(); itTile++)
+	{
+		MapTile* tile = *itTile;
+		if (tile == sourceTile)
+		{
+			return false;
+		}
+	}
+
 	return false;
 }
+

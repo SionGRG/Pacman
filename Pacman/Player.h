@@ -6,16 +6,16 @@
 
 
 class ResourceCache;
-class Level;
+class PacmanLv1;
 
 class Player : public GameObject
 {
 public:
-	Player(Sprite* spr, v2& pos, bool activate, ResourceCache* cache, Level* level);
+	Player(Sprite* spr, v2& pos, bool activate, ResourceCache* cache, PacmanLv1* level);
 	~Player() override;
 
 	int Init(Sprite* spr) override;
-	int UpdateControls() override;
+	int UpdateControls(float& elapsedTime) override;
 	int UpdateCollision(float& elapsedTime) override;
 	int Terminate() override;
 
@@ -24,17 +24,14 @@ public:
 	int GetScore() { return m_Score; }
 	int GetLives() { return m_Lives; }
 
-protected:
-	int EnableSprite(std::string_view sprName);
-	int StopAnimations();
-
 private:
 	ResourceCache* m_Cache;
-	Level* m_Level;
+	PacmanLv1* m_Level;
 
 	int m_Score;
 	int m_Lives;
 	float m_MoveSpeed;
+	float m_Blocked;
 
 	bool m_Terminated = false;
 };

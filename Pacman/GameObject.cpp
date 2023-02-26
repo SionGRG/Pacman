@@ -1,5 +1,6 @@
 #include "GameObject.h"
 #include "Sprite.h"
+#include "Animation.h"
 
 
 GameObject::GameObject(Sprite* spr, v2& pos = v2(0, 0), bool activate = false)
@@ -31,7 +32,7 @@ int GameObject::Update(float& elapsedTime)
 	if (m_Active)
 	{
 		// update the Gameobject's controlls
-		UpdateControls();
+		UpdateControls(elapsedTime);
 		
 		// update the Gameobject's sprites
 		for (auto itSpr = m_Sprites.begin(); itSpr != m_Sprites.end(); ++itSpr)
@@ -107,10 +108,50 @@ v2 GameObject::GetPosition()
 	);
 }
 
+void GameObject::SetPosition(v2& vel)
+{
+	for (auto itSpr = m_Sprites.begin(); itSpr != m_Sprites.end(); ++itSpr)
+	{
+		itSpr->second->GetPosRect()->x = vel.myX;
+		itSpr->second->GetPosRect()->y = vel.myY;
+
+	}
+}
+
 bool GameObject::HasCollided(const v2& position)
 {
 	if ((GetPosition() - position).Length() < 5.f)
 		return true;
 	else
 		return false;
+}
+
+int GameObject::EnableSprite(std::string_view sprName)
+{
+	// Disable all the sprite and enable the specified one
+	for (SpriteMap::iterator itSpr = m_Sprites.begin(); itSpr != m_Sprites.end(); ++itSpr)
+	{
+		itSpr->second->m_Active = false;
+	}
+	m_Sprites.at(sprName.data())->m_Active = true;
+	PlayAnimation(sprName.data());
+	return retCode;
+}
+
+int GameObject::PlayAnimation(std::string_view sprName)
+{
+	if (m_Sprites.at(sprName.data())->GetAnim() != nullptr)
+		m_Sprites.at(sprName.data())->GetAnim()->PlayAnimation();
+
+	return retCode;
+}
+
+int GameObject::StopAnimations()
+{
+	// Disable all the sprite and enable the specified one
+	for (SpriteMap::iterator itSpr = m_Sprites.begin(); itSpr != m_Sprites.end(); ++itSpr)
+		if (itSpr->second->GetAnim() != nullptr)
+			itSpr->second->GetAnim()->StopAnimation();
+
+	return retCode;
 }

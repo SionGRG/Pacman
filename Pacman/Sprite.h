@@ -6,6 +6,7 @@
 #include "DataStructures.h"
 
 class Animation;
+class Collider2D;
 
 /*
 	This class contains the structure of the sprite used in the game
@@ -15,7 +16,7 @@ class Sprite
 {
 public:
 	Sprite() {}
-	Sprite(SpriteData* sprData, SDL_Texture* sprTex, v2& pos);
+	Sprite(SpriteData* sprData, SDL_Texture* sprTex, v2& pos, bool EnableCollision = false);
 	~Sprite();
 	
 	int Init();
@@ -31,8 +32,11 @@ public:
 
 	RECTF* GetPosRect() { return &m_PosRect; }
 	v2& GetPos() { return m_Pos; }
+	v2& GetScale() { return m_Scale; }
 
 	Animation* GetAnim() { return m_Animation; }
+	Collider2D* GetBoxCollider() { return m_CollisionBox; };
+	RECTB* GetCollisionBox();
 
 	bool m_Active = false;	// by default its asleep and should not render or update
 
@@ -45,6 +49,9 @@ private:
 	v2 m_Pos;
 	v2 m_Scale;
 	RECTF m_PosRect;
+
+	Collider2D* m_CollisionBox;
+	bool m_CollisionStatus;
 
 	bool m_Terminated = false;
 };

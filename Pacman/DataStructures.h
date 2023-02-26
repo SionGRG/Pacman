@@ -5,6 +5,7 @@
 #include <string>
 #include <unordered_map>
 #include <map>
+#include <list>
 #include "Vector2f.h"
 #include "SDL.h"
 
@@ -91,8 +92,89 @@ struct MapTile
 	bool m_IsBlockingFlag;
 	bool m_IsVisitedFlag;
 };
-typedef std::vector<MapTile*> MapTileVector;
+typedef std::list<MapTile*> MapTileList;
 
 
+// Collision Rectangle definer
+struct RECTB
+{
+	float x, y, w, h;
+	v2 velocity, origin, pos, size;
+
+	RECTB()
+		:x(0), y(0), w(0), h(0)
+	{
+		pos = v2(x, y);
+		size = v2(w, h);
+		velocity = v2(0, 0);
+	};
+
+	RECTB(float l, float t, float r, float b)
+		:x(l), y(t), w(r), h(b)
+	{
+		pos = v2(x, y);
+		size = v2(w, h);
+		velocity = v2(0, 0);
+	};
+
+	RECTB(RECTL& r)
+		:x((float)r.x), y((float)r.y), w((float)r.w), h((float)r.h)
+	{
+		pos = v2(x, y);
+		size = v2(w, h);
+		velocity = v2(0, 0);
+		origin = v2(x + (w / 2), (y + h / 2));
+	};
+
+	RECTB(float l, float t, float r, float b, v2 vel)
+		:x(l), y(t), w(r), h(b), velocity(vel)
+	{
+		pos = v2(x, y);
+		size = v2(w, h);
+		origin = v2(x + (w / 2), (y + h / 2));
+	};
+
+	RECTB(float l, float t, float r, float b, v2 vel, v2 org)
+		:x(l), y(t), w(r), h(b), velocity(vel), origin(org)
+	{
+		pos = v2(x, y);
+		size = v2(w, h);
+	};
+
+	RECTB(RECTF& r, v2 vel)
+		:x((float)r.x), y((float)r.y), w((float)r.w), h((float)r.h), velocity(vel)
+	{
+		pos = v2(x, y);
+		size = v2(w, h);
+		origin = v2(x + (w / 2), (y + h / 2));
+	};
+
+	RECTB(RECTF& r, v2& vel, v2 org)
+		:x((float)r.x), y((float)r.y), w((float)r.w), h((float)r.h), velocity(vel), origin(org)
+	{
+		pos = v2(x, y);
+		size = v2(w, h);
+	};
+
+	operator RECTL() {
+		return RECTL{ (int)x, (int)y, (int)w, (int)h };
+	}
+
+	operator RECTF() {
+		return RECTF{ (float)x, (float)y, (float)w, (float)h };
+	}
+
+	operator RECTB() {
+		return RECTB{ x, y, w, h, velocity };
+	}
+
+	RECTB operator=(RECTB& r) {
+		return RECTB(r.x, r.y, r.h, r.w, r.velocity);
+	};
+
+	RECTB operator()(RECTB& r) {
+		return RECTB(r.x, r.y, r.h, r.w, r.velocity, r.origin);
+	};
+};
 
 #endif // !__DATASTRUCTURES_H__
