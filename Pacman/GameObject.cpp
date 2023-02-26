@@ -46,9 +46,8 @@ int GameObject::Update(float& elapsedTime)
 			itSpr->second->GetPosRect()->y += m_PosVel.myY;
 		}
 
-		// Update gameobject's movement
-		//m_Pos.myX += m_PosVel.myX;
-		//m_Pos.myY += m_PosVel.myY;
+		// Update the game collisions
+		UpdateCollision(elapsedTime);
 	}
 
 	return retCode;
@@ -98,4 +97,20 @@ int GameObject::RemoveSprite(Sprite* spr)
 Sprite* GameObject::GetSprite(std::string_view sprName)
 {
 	return m_Sprites.at(sprName.data());
+}
+
+v2 GameObject::GetPosition()
+{
+	return v2(
+		m_Sprites.begin()->second->GetPosRect()->x,
+		m_Sprites.begin()->second->GetPosRect()->y
+	);
+}
+
+bool GameObject::HasCollided(const v2& position)
+{
+	if ((GetPosition() - position).Length() < 5.f)
+		return true;
+	else
+		return false;
 }

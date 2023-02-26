@@ -17,6 +17,8 @@ public:
 	int UpdateControls() override;
 	int Terminate() override;
 
+	int m_Type = 2;
+	std::string_view GetType() override { return "Ghost"; }; // by default its "GameObject"
 
 protected:
 	ResourceCache* m_Cache;

@@ -12,6 +12,8 @@ public:
 
 	int Terminate() override;
 
+	int m_Type = 5;
+	std::string_view GetType() override { return "BigDot"; }; // by default its "GameObject"
 
 protected:
 

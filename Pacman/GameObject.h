@@ -20,6 +20,7 @@ public:
 	virtual int Init(Sprite* spr);
 	virtual int UpdateControls() { return retCode; }
 	virtual int Update(float& elapsedTime);
+	virtual int UpdateCollision(float& elapsedTime) { return retCode; }
 	virtual int Terminate();
 
 	// Sprite Functions
@@ -29,12 +30,18 @@ public:
 	Sprite* GetSprite(std::string_view sprName);
 
 	// Movement
+	v2 GetPosition();
 	v2* GetPositionVelocity() { return &m_PosVel; }
 	void SetPositionVelocity(v2& vel) { m_PosVel = vel; }
 	void UpdatePositionVelocity(v2& vel) { m_PosVel += vel; }
 	void UpdateDirection(v2& vel) { m_PosVel *= vel; }
 
+	// Collisions
+	bool HasCollided(const v2& position);
+
 	bool m_Active = false ;	// by default its asleep and should not render or update
+	int m_Type = 0;	// by default its "GameObject"
+	virtual std::string_view GetType() { return "GameObject"; }; // by default its "GameObject"
 
 protected:
 	std::string m_Name;

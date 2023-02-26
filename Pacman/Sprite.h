@@ -32,6 +32,8 @@ public:
 	RECTF* GetPosRect() { return &m_PosRect; }
 	v2& GetPos() { return m_Pos; }
 
+	Animation* GetAnim() { return m_Animation; }
+
 	bool m_Active = false;	// by default its asleep and should not render or update
 
 private:

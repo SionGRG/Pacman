@@ -68,7 +68,7 @@ int PacmanLv1::Init()
 				// add the player's gameobject
 				if (mapData[i] == 'p')
 				{
-					AddGameObject("Packman", new Player(new Sprite(m_Cache->GetSpriteData("Pacman_left_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0)), v2((i * 22) + mapStartPosX, (lineIndex * 22) + mapStartPosY), true, m_Cache));
+					AddGameObject("Packman", new Player(new Sprite(m_Cache->GetSpriteData("Pacman_left_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0)), v2((i * 22) + mapStartPosX, (lineIndex * 22) + mapStartPosY), true, m_Cache, this));
 				}
 			}
 			++lineIndex;
@@ -91,4 +91,59 @@ int PacmanLv1::Terminate()
 
 	m_Terminated = false;
 	return retCode;
+}
+
+bool PacmanLv1::TileIsValid(int& x, int& y)
+{
+	bool valid = false;
+	std::for_each(m_MapTiles.begin(), m_MapTiles.end(), [&valid, &x, &y](MapTile* tile) 
+		{
+			if (x == tile->m_X && y == tile->m_Y && !tile->m_IsBlockingFlag)
+				valid = true;
+		});
+
+	return valid;
+}
+
+bool PacmanLv1::HasIntersectedDot(const v2& position)
+{
+	bool intersected = false;
+	std::for_each(m_GameObjects.begin(), m_GameObjects.end(), [&intersected, &position](std::pair<const std::string, GameObject*> objPair)
+		{
+			if ((objPair.second->GetPosition() - position).Length() < 5.f)
+			{
+				intersected = true;
+			}
+		});
+
+	return intersected;
+}
+
+bool PacmanLv1::HasIntersectedBigDot(const v2& position)
+{
+	return false;
+}
+
+bool PacmanLv1::HasIntersectedCherry(const v2& position)
+{
+	return false;
+}
+
+void PacmanLv1::GetPath(int& sourceX, int& sourceY, int& destX, int& destY, MapTileVector& tiles)
+{
+}
+
+MapTile* PacmanLv1::GetTile(int& aFromX, int& aFromY)
+{
+	return nullptr;
+}
+
+bool PacmanLv1::Pathfind(MapTile* sourceTile, MapTile* destTile, MapTileVector& tiles)
+{
+	return false;
+}
+
+bool PacmanLv1::ListDoesNotContain(MapTile* sourceTile, MapTileVector& tiles)
+{
+	return false;
 }

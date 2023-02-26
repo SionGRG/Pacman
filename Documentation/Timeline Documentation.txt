@@ -27,6 +27,8 @@
 */
 
 
+	/*  ################### GitHub Repository ################### */
+	Repo Link: https://github.com/SionGRG/Pacman 
 
 
 	/*  ################### PROJECT PLAN ################### */
@@ -36,8 +38,8 @@ Main Goals:
 ✓	- create a sprite class
 ✓	- create a Renderer that renders all the game objects
 ✓	- create a spritesheets atlas to speed up load times
-	- improving memory management and fix memory leaks
-	- fix the memory leak problem that causes the game to crash after some time
+✓	- improving memory management and fix memory leaks
+✓	- fix the memory leak problem that causes the game to crash after some time
 	- fix the framerate, and get the game to a playable state
 	- fix the collision detection, especially after the player dies
 	- make a playable level; Pacman can move around and collect the dots, and the ghosts chase him
@@ -194,7 +196,16 @@ Day 12: 25th February 2023
 		- Details: Created the map of the level using the data from the map.txt file. Added the dots using data from the map.txt file. Added the Big dots using data from the map.txt file. Changed GameObjectMap to a map instead of an unordered map to allow for prioritisation of rendering game objects according to their position in the map, since SDL does not allow setting whether you can draw a texture in front of another.
 		- ETA: 2 hrs 45 min
 		
+		
+Day 13: 26th February 2023
 
+	-> Brief: Refining Gameplay Part 4
+		
+	* Task 21: Added Pacman collisions with the Dots and BigDots
+		- Details: Added Pacman collisions with the Dots and BigDots. Refined Pacman's movement animations. 
+		- ETA: 2 hrs 45 min
+
+		
 	* Task X: 
 		- Details: 
 		- ETA: -- hrs -- min
