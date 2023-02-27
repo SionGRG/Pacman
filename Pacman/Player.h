@@ -23,6 +23,8 @@ public:
 	void IncreaseMoveSpeed() { m_MoveSpeed = 1.2f; }
 	int GetScore() { return m_Score; }
 	int GetLives() { return m_Lives; }
+	
+	std::string_view GetType() override { return "Player"; }; // by default its "GameObject"
 
 private:
 	ResourceCache* m_Cache;

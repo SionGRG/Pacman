@@ -1,9 +1,12 @@
 #include "Renderer.h"
-#include "SDL_ttf.h"
+#include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_ttf.h"
 #include <assert.h>
+#include <algorithm>
 #include "GameObject.h"
 #include "Sprite.h"
+#include "Text.h"
 
 Renderer::Renderer(const char* gameName)
 {
@@ -78,6 +81,8 @@ int Renderer::Render(GameObjectMap* gameObjects)
 		}
 	}
 
+	// Render the texts 
+	std::for_each(m_Texts.begin(), m_Texts.end(), [](Text* text) { text->Render(); });
 
 	return retCode;
 }
@@ -87,6 +92,10 @@ int Renderer::Terminate()
 	SDL_DestroyWindow(m_Window);
 	SDL_DestroyRenderer(m_Renderer);
 
+	// Deallocate the texts memory
+	std::for_each(m_Texts.begin(), m_Texts.end(), [](Text* text) { delete text; });
+	m_Texts.clear();
+
 	TTF_Quit();
 	IMG_Quit();
 	SDL_Quit();
@@ -95,3 +104,38 @@ int Renderer::Terminate()
 	return retCode;
 }
 
+void Renderer::RenderStaticText(std::string_view textData, std::string_view fontFile, int xPos, int yPos, int fontSize, COLOUR rgbaColour)
+{
+	Text* text = new Text(m_Renderer, textData, fontFile, xPos, yPos, fontSize, rgbaColour);
+
+	m_Texts.emplace_back(text);
+}
+
+void Renderer::RenderText(std::string_view textData, std::string_view fontFile, int xPos, int yPos, int fontSize, COLOUR rgbaColour)
+{
+	TTF_Font* font = TTF_OpenFont(fontFile.data(), fontSize);
+
+	SDL_Surface* surface = TTF_RenderText_Solid(font, textData.data(), rgbaColour);
+
+	if (!surface)
+		return;
+
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(m_Renderer, surface);
+
+	SDL_Rect sizeRect;
+	sizeRect.x = 0;
+	sizeRect.y = 0;
+	sizeRect.w = surface->w;
+	sizeRect.h = surface->h;
+
+	SDL_Rect posRect;
+
+	posRect.x = xPos;
+	posRect.y = yPos;
+	SDL_QueryTexture(texture, nullptr, nullptr, &posRect.w, &posRect.h);
+
+	SDL_RenderCopy(m_Renderer, texture, &sizeRect, &posRect);
+	SDL_DestroyTexture(texture);
+	SDL_FreeSurface(surface);
+	TTF_CloseFont(font);
+}

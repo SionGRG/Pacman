@@ -1,5 +1,6 @@
 #include "PacmanLv1.h"
 #include "ResourceCache.h"
+#include "Renderer.h"
 #include "GameObject.h"
 #include "Sprite.h"
 #include "Player.h"
@@ -9,11 +10,11 @@
 #include <fstream>
 #include <algorithm>
 
-
-PacmanLv1::PacmanLv1(std::string_view levelName, ResourceCache* cache)
+PacmanLv1::PacmanLv1(std::string_view levelName, ResourceCache* cache, Renderer* renderer)
 {
 	m_Name = levelName;
 	m_Cache = cache;
+	m_Renderer = renderer;
 	Init();
 }
 
@@ -68,7 +69,7 @@ int PacmanLv1::Init()
 				// add the player's gameobject
 				if (mapData[i] == 'p')
 				{
-					AddGameObject("Packman", new Player(new Sprite(m_Cache->GetSpriteData("Pacman_left_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0), true), v2((i * 22) + mapStartPosX, (lineIndex * 22) + mapStartPosY), true, m_Cache, this));
+					AddGameObject("Pacman", new Player(new Sprite(m_Cache->GetSpriteData("Pacman_left_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0), true), v2((i * 22) + mapStartPosX, (lineIndex * 22) + mapStartPosY), true, m_Cache, this));
 				}
 			}
 			++lineIndex;
@@ -78,6 +79,28 @@ int PacmanLv1::Init()
 	// add test game objects
 	AddGameObject("RedGhost", new Ghost(new Sprite(m_Cache->GetSpriteData("ghost_red_32"), m_Cache->GetTexture("Lv1Spritesheet"), v2(0, 0)), v2(498, 350), true, m_Cache, this));
 
+	m_Renderer->RenderStaticText("Score: ", "freefont-ttf\\sfd\\FreeMono.ttf", 20, 50);
+	m_Renderer->RenderStaticText("Lives: ", "freefont-ttf\\sfd\\FreeMono.ttf", 20, 80);
+	m_Renderer->RenderStaticText("FPS: ", "freefont-ttf\\sfd\\FreeMono.ttf", 850, 50);
+	return retCode;
+}
+
+int PacmanLv1::Update(float& elapsedTime)
+{
+	Level::Update(elapsedTime);
+
+	return retCode;
+}
+
+int PacmanLv1::RenderText()
+{
+	if (m_GameObjects.at("Pacman")->GetType() == "Player")
+	{
+		Player* p = (Player*)m_GameObjects.at("Pacman");
+
+		m_Renderer->RenderText(std::to_string(p->GetScore()).c_str(), "freefont-ttf\\sfd\\FreeMono.ttf", 110, 50);
+		m_Renderer->RenderText(std::to_string(p->GetLives()).c_str(), "freefont-ttf\\sfd\\FreeMono.ttf", 110, 80);
+	}
 
 	return retCode;
 }

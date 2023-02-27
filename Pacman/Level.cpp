@@ -13,7 +13,6 @@ Level::~Level()
 
 int Level::Update(float& elapsedTime)
 {
-
 	// Update the game objects
 	for (auto itObj = m_GameObjects.begin(); itObj != m_GameObjects.end(); ++itObj)
 	{

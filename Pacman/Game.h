@@ -43,6 +43,7 @@ private:
 	const float k_FPS = 60.f;
 	const float k_FrameDelay = 1000 / k_FPS;
 
+	float m_FPS = 0.f;
 };
 
 #endif // !__GAME_H__

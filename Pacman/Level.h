@@ -7,6 +7,7 @@
 
 
 class ResourceCache;
+class Renderer;
 
 /*
 	This class contains the structure of level
@@ -20,7 +21,8 @@ public:
 	virtual ~Level();
 
 	virtual int Init() = 0;
-	int Update(float& elapsedTime);
+	virtual int Update(float& elapsedTime);
+	virtual int RenderText() { return retCode; }
 	virtual int Terminate();
 
 	int AddGameObject(std::string_view objName, GameObject* gameObject);
@@ -34,6 +36,7 @@ protected:
 	std::string m_Name;
 
 	ResourceCache* m_Cache;
+	Renderer* m_Renderer;
 	GameObjectMap m_GameObjects;
 
 private:

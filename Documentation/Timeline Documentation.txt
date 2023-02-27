@@ -1,4 +1,7 @@
-﻿/*	
+﻿
+Author: Sion Gregoire IRADUKUNDA
+
+/*	
 
 	***** TASK DESCRIPTION ******
 
@@ -54,7 +57,7 @@ Stretch Goals:
 	- add more levels (possibly)
 	- add audio and audio effects
 	- speed the engine and game with multi-threading both loading and gameplay
-	- added the onscreen text, i.e. currennt score and lives remaining
+✓	- added the onscreen text, i.e. currennt score and lives remaining
 
 
 
@@ -179,7 +182,7 @@ Day 11: 23rd February 2023
 		- ETA: 2 hrs 30 min
 
 
-Day 11: 24th February 2023
+Day 12: 24th February 2023
 		
 	-> Brief: Refining Gameplay Part 2
 
@@ -188,7 +191,7 @@ Day 11: 24th February 2023
 		- ETA: 2 hrs 45 min
 
 		
-Day 12: 25th February 2023
+Day 13: 25th February 2023
 
 	-> Brief: Refining Gameplay Part 3
 
@@ -197,7 +200,7 @@ Day 12: 25th February 2023
 		- ETA: 2 hrs 45 min
 		
 		
-Day 13: 26th February 2023
+Day 14 & 15: 26th & 27th February 2023
 
 	-> Brief: Refining Gameplay Part 4
 		
@@ -209,7 +212,11 @@ Day 13: 26th February 2023
 		- Details: Added collision detection between a point and a rect. Added collision detection between a rect and a rect. Added a definition of the Collision box RECT to the data structures. Moved some functionality from the Player class to it's Base GameObject Class. Added foundation movement to the Ghost class(not working at the moment).
 		- ETA: 5 hrs 00 min
 		
+	* Task 23: Display Text on the screen
+		- Details: Added a way to display text on the screen. Calculated the fps to be displayed. Now displays the FPS and the player's score and lives. 
+		- ETA: 05 hrs 00 min
 		
+
 	* Task X: 
 		- Details: 
 		- ETA: -- hrs -- min

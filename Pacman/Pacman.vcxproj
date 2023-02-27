@@ -147,6 +147,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StaticGameEntity.cpp" />
     <ClCompile Include="ResourceCache.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Vector2f.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -190,6 +191,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StaticGameEntity.h" />
     <ClInclude Include="ResourceCache.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Vector2f.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

@@ -97,9 +97,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Drawer.cpp">
-      <Filter>Engine\Graphics\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Engine\System</Filter>
     </ClCompile>
@@ -145,6 +142,12 @@
     <ClCompile Include="Collider.cpp">
       <Filter>Engine\System</Filter>
     </ClCompile>
+    <ClCompile Include="Drawer.cpp">
+      <Filter>Game\OldPacman</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Engine\System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h">
@@ -182,9 +185,6 @@
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Drawer.h">
-      <Filter>Engine\Graphics\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Engine\System</Filter>
@@ -266,6 +266,12 @@
       <Filter>Game\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Collider.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawer.h">
+      <Filter>Game\OldPacman</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
       <Filter>Engine\System</Filter>
     </ClInclude>
   </ItemGroup>

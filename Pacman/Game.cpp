@@ -46,7 +46,7 @@ int Game::Init()
 	m_Cache->LoadAtlasData("PacmanAtlasData.json");
 
 	/* Add Pacman level 1 */
-	m_Level01 = new PacmanLv1("Pacman Level 1", m_Cache);
+	m_Level01 = new PacmanLv1("Pacman Level 1", m_Cache, m_Renderer);
 
 #endif // INITIAL_PACMAN
 	m_IsRunning = true;
@@ -102,6 +102,13 @@ int Game::Update()
 	
 		// Render the game objects
 		m_Renderer->Render(m_Level01->GetGameObjects());
+
+		m_Level01->RenderText();
+
+		if (elapsedTime > 0)
+			m_FPS = (1000 / elapsedTime);
+
+		m_Renderer->RenderText(std::to_string(m_FPS).c_str(), "freefont-ttf\\sfd\\FreeMono.ttf", 920, 50);
 
 #endif // INITIAL_PACMAN
 

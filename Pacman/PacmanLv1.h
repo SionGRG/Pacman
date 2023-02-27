@@ -4,14 +4,15 @@
 
 #include "Level.h"
 
-
 class PacmanLv1: public Level
 {
 public:
-	PacmanLv1(std::string_view levelName, ResourceCache* cache);
+	PacmanLv1(std::string_view levelName, ResourceCache* cache, Renderer* renderer);
 	~PacmanLv1();
 
 	int Init() override;
+	int Update(float& elapsedTime) override;
+	int RenderText() override;
 	int Terminate() override;
 
 	bool TileIsValid(int& x, int& y);

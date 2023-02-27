@@ -54,12 +54,15 @@ struct RECTF
 	}
 };
 
+// Textures
 struct SDL_Texture;
 typedef std::unordered_map<std::string, SDL_Texture*> TextureMap;
 
+// Sprites
 class Sprite;
 typedef std::unordered_map<std::string, Sprite*> SpriteMap;
 
+// Gamae objects
 class GameObject;
 //typedef std::unordered_map<std::string, GameObject*> GameObjectMap;
 typedef std::map<std::string, GameObject*> GameObjectMap;
@@ -176,5 +179,55 @@ struct RECTB
 		return RECTB(r.x, r.y, r.h, r.w, r.velocity, r.origin);
 	};
 };
+
+// Colour rect
+typedef struct RECTI
+{
+	int x, y, w, h;
+
+	RECTI()
+		:x(0), y(0), w(0), h(0)
+	{};
+
+	RECTI(int l, int t, int r, int b)
+		:x(l), y(t), w(r), h(b)
+	{};
+
+	RECTI(const RECTF& r)
+		:x(r.x), y(r.y), w(r.w), h(r.h)
+	{};
+
+	RECTI(const RECTL& r)
+		:x((int)r.x), y((int)r.y), w((int)r.w), h((int)r.h)
+	{};
+
+	operator RECTL() {
+		return RECTL{ (int)x, (int)y, (int)w, (int)h };
+	}
+
+	operator RECTF() {
+		return RECTF{ (float)x, (float)y, (float)w, (float)h };
+	}
+
+	operator RECTI() {
+		return RECTI{ x, y, w, h };
+	}
+
+	operator SDL_Color() {
+		return SDL_Color{ (Uint8)x, (Uint8)y, (Uint8)w, (Uint8)h };
+	}
+
+	RECTI operator=(RECTI& r) {
+		return RECTI(r.x, r.y, r.h, r.w);
+	};
+
+	RECTI operator()(RECTI& r) {
+		return RECTI(r.x, r.y, r.h, r.w);
+	};
+} COLOUR;
+
+// Text
+class Text;
+typedef std::vector<Text*> VTexts;
 
 #endif // !__DATASTRUCTURES_H__
